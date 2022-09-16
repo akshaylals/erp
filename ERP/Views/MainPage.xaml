@@ -51,7 +51,9 @@
             VerticalOptions="End">
             <Button.GestureRecognizers>
                 <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop_1"></DropGestureRecognizer>
+                <TapGestureRecognizer Tapped="CartPageFn"></TapGestureRecognizer>
             </Button.GestureRecognizers>
+            
         </Button>
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
