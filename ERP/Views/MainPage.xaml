@@ -7,6 +7,7 @@
     x:DataType="viewmodels:ProductsViewModel"
     Title="{Binding Title}">
 
+
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
@@ -14,11 +15,15 @@
         RowSpacing="0">
         <CollectionView ItemsSource="{Binding Products}"
                          SelectionMode="None"
+                         Margin="0,0,0,60"
                          Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid Padding="10">
-                        <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                        <Frame ClassId="{Binding Id}" HeightRequest="125" Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" DragStarting="DragGestureRecognizer_DragStarting_1"></DragGestureRecognizer>
+                            </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
@@ -36,13 +41,18 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Get Products" 
-                Command="{Binding GetProductsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
+        <Button
+            HeightRequest="60"
+            Grid.ColumnSpan="2"
+            BackgroundColor="White"
+            TextColor="Black"
+            Text="Cart"
+            HorizontalOptions="Fill"
+            VerticalOptions="End">
+            <Button.GestureRecognizers>
+                <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop_1"></DropGestureRecognizer>
+            </Button.GestureRecognizers>
+        </Button>
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
@@ -52,4 +62,5 @@
                            Grid.ColumnSpan="2"/>
     </Grid>
 
+    
 </ContentPage>
