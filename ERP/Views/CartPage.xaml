@@ -29,6 +29,7 @@
                                     Grid.Column="1"
                                     Padding="10">
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
+                                    <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
