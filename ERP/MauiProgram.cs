@@ -1,6 +1,7 @@
 ﻿using ERP.Services;
 using ERP.ViewModels;
 using ERP.Views;
+using SimpleRatingControlMaui;
 
 namespace ERP;
 
@@ -11,7 +12,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseSimpleRatingControl()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

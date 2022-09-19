@@ -4,6 +4,7 @@
     x:Class="ERP.Views.MainPage"
     xmlns:models="clr-namespace:ERP.Models"
     xmlns:viewmodels="clr-namespace:ERP.ViewModels"
+    xmlns:controls="http://www.tsjdev-apps.de/maui/controls"
     x:DataType="viewmodels:ProductsViewModel"
     Title="{Binding Title}">
 
@@ -33,6 +34,16 @@
                                     Padding="10">
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
                                     <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                    <HorizontalStackLayout>
+                                        <controls:SimpleRatingControl Amount="5"
+                                              CurrentValue="{Binding Rating.Rate}"
+                                              AccentColor="Gold"
+                                              FontSize="16"
+                                              RatingType="Star" />
+                                        <Label Text="("/>
+                                        <Label Text="{Binding Rating.Count}"/>
+                                        <Label Text=")"/>
+                                    </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
