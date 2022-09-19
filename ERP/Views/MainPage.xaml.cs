@@ -1,5 +1,4 @@
-﻿using Android.Media;
-using ERP.ViewModels;
+﻿using ERP.ViewModels;
 using Debug = System.Diagnostics.Debug;
 
 namespace ERP.Views;
@@ -28,7 +27,6 @@ public partial class MainPage : ContentPage
 
     private void CartPageFn(object sender, EventArgs e)
     {
-        Debug.WriteLine("foo");
         Shell.Current.GoToAsync(nameof(CartPage));
     }
 }
