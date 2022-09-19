@@ -32,5 +32,18 @@ public partial class MainPage : ContentPage
     {
         Shell.Current.GoToAsync(nameof(CartPage));
     }
+
+
+    private async void SwipeAddCart(object sender, SwipedEventArgs e)
+    {
+        var data = e.Parameter.ToString();
+        CartService cartService = new CartService();
+        await cartService.PostCartProduct(data);
+    }
+
+    private void SwipeShowProduct(object sender, SwipedEventArgs e)
+    {
+        var data = e.Parameter.ToString();
+    }
 }
 

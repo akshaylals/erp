@@ -21,9 +21,25 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid Padding="10">
-                        <Frame ClassId="{Binding Id}" HeightRequest="125" Style="{StaticResource CardView}">
-                            <Frame.GestureRecognizers>
-                                <DragGestureRecognizer CanDrag="True" DragStarting="DragGestureRecognizer_DragStarting_1"></DragGestureRecognizer>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Add to Cart"
+                                           BackgroundColor="Red"
+                                         />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Details"
+                                           BackgroundColor="Green"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
+                                <Frame.GestureRecognizers>
+                                <SwipeGestureRecognizer Direction="Left" Swiped="SwipeAddCart" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
+                                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
                             </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"
@@ -33,7 +49,10 @@
                                     Grid.Column="1"
                                     Padding="10">
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
-                                    <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                    <HorizontalStackLayout>
+                                        <Label Text="$"/>
+                                        <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                    </HorizontalStackLayout>
                                     <HorizontalStackLayout>
                                         <controls:SimpleRatingControl Amount="5"
                                               CurrentValue="{Binding Rating.Rate}"
@@ -47,6 +66,7 @@
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
+                     </SwipeView>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -20,7 +20,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid Padding="10">
-                        <Frame ClassId="{Binding Id}" HeightRequest="125" Style="{StaticResource CardView}">
+                        <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
@@ -29,7 +29,10 @@
                                     Grid.Column="1"
                                     Padding="10">
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
-                                    <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                    <HorizontalStackLayout>
+                                        <Label Text="$"/>
+                                        <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                    </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
