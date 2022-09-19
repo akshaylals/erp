@@ -1,5 +1,9 @@
-﻿using ERP.Models;
+﻿using Android.OS;
+using ERP.Models;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Debug = System.Diagnostics.Debug;
 
 namespace ERP.Services
 {
@@ -27,6 +31,21 @@ namespace ERP.Services
             }
 
             return cartProductList;
+        }
+
+        public async Task PostCartProduct(string id)
+        {
+            var response = await httpClient.GetAsync($"{Constants.productsEndpoint}/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                Product product = await response.Content.ReadFromJsonAsync<Product>();
+                var productj = JsonConvert.SerializeObject(product);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(productj);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var result = await httpClient.PostAsync(Constants.cartEndpoint, byteContent);
+            }
         }
     }
 }

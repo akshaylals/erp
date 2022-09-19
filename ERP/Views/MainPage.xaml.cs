@@ -1,4 +1,5 @@
-﻿using ERP.ViewModels;
+﻿using ERP.Services;
+using ERP.ViewModels;
 using Debug = System.Diagnostics.Debug;
 
 namespace ERP.Views;
@@ -18,11 +19,13 @@ public partial class MainPage : ContentPage
         e.Data.Properties.Add("Id", frame.ClassId);
     }
 
-    private void DropGestureRecognizer_Drop_1(object sender, DropEventArgs e)
+    private async void DropGestureRecognizer_Drop_1(object sender, DropEventArgs e)
     {
         var data = e.Data.Properties["Id"].ToString();
         var frame = (sender as Element)?.Parent as Frame;
         // Shell.Current.GoToAsync(nameof(CartPage));
+        CartService cartService = new CartService();
+        await cartService.PostCartProduct(data);
     }
 
     private void CartPageFn(object sender, EventArgs e)
