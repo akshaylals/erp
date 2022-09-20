@@ -37,8 +37,8 @@
                             </SwipeView.LeftItems>
                             <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
                                 <Frame.GestureRecognizers>
-                                    <SwipeGestureRecognizer Direction="Left" Swiped="SwipeDeleteCart" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
-                                    <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
+                                    <SwipeGestureRecognizer Direction="Left" Swiped="SwipeDeleteCart" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
+                                    <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <Image Aspect="AspectFill" Source="{Binding Image}"

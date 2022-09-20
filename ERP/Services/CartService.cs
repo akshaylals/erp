@@ -49,7 +49,7 @@ namespace ERP.Services
 
         public async Task DeleteCartProduct(string id)
         {
-            var response = await httpClient.DeleteAsync($"{Constants.productsEndpoint}/{id}");
+            var response = await httpClient.DeleteAsync($"{Constants.cartEndpoint}/{id}");
 
             if (!response.IsSuccessStatusCode)
             {
