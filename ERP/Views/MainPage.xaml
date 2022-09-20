@@ -37,7 +37,7 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
-                                <Frame.GestureRecognizers>
+                            <Frame.GestureRecognizers>
                                 <SwipeGestureRecognizer Direction="Left" Swiped="SwipeAddCart" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
                                 <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
                             </Frame.GestureRecognizers>

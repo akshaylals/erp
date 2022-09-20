@@ -46,5 +46,16 @@ namespace ERP.Services
                 var result = await httpClient.PostAsync(Constants.cartEndpoint, byteContent);
             }
         }
+
+        public async Task DeleteCartProduct(string id)
+        {
+            var response = await httpClient.DeleteAsync($"{Constants.productsEndpoint}/{id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Error deleting from cart");
+                Debug.WriteLine(response.ToString());
+            }
+        }
     }
 }

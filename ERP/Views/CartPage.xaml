@@ -20,22 +20,42 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid Padding="10">
-                        <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
-                            <Grid Padding="0" ColumnDefinitions="125,*">
-                                <Image Aspect="AspectFill" Source="{Binding Image}"
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Details"
+                                           BackgroundColor="Green"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
+                                <Frame.GestureRecognizers>
+                                    <SwipeGestureRecognizer Direction="Left" Swiped="SwipeDeleteCart" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
+                                    <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}"></SwipeGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>
-                                <VerticalStackLayout
+                                    <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
-                                    <HorizontalStackLayout>
-                                        <Label Text="$"/>
-                                        <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
-                                    </HorizontalStackLayout>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
+                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
+                                        <HorizontalStackLayout>
+                                            <Label Text="$"/>
+                                            <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
