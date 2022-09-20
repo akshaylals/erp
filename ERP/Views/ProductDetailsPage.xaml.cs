@@ -1,26 +1,15 @@
 using ERP.Models;
 using ERP.ViewModels;
+using Debug = System.Diagnostics.Debug;
 
 namespace ERP.Views;
 
-[QueryProperty(nameof(Vm), "viewModel")]
 public partial class ProductDetailsPage : ContentPage
-{
-	ProductDetailsViewModel viewModel;
-	public ProductDetailsViewModel Vm
-	{
-		get => viewModel;
-		set
-		{
-			viewModel = value;
-			OnPropertyChanged();
-		}
-
-    }
-	
-	public ProductDetailsPage()
+{	
+	public ProductDetailsPage(ProductDetailsViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = this;
+		//viewModel.GetProductCommand.Execute(viewModel);
+		BindingContext = viewModel;
 	}
 }

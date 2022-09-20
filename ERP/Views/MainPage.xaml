@@ -45,7 +45,10 @@
                             <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
                             <Frame.GestureRecognizers>
                                 <SwipeGestureRecognizer Direction="Left" Swiped="SwipeAddCart" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
-                                    <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
+                                    <SwipeGestureRecognizer Direction="Right"
+                                                            Swiped="SwipeShowProduct"
+                                                            CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
+                                                            <!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductDetailsViewModel}}, Path=ProductDetailsCommand}"-->
                             </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"

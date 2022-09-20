@@ -4,9 +4,9 @@
              x:Class="ERP.Views.ProductDetailsPage"
              Title="ProductDetailsPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <!--<Image Aspect="AspectFill" Source="{Binding Image}"-->
+                                       <!--WidthRequest="125"
+                                       HeightRequest="125"/>-->
+        <Label Text="{Binding Id}"/>
     </VerticalStackLayout>
 </ContentPage>

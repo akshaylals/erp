@@ -4,44 +4,26 @@ using ERP.Services;
 using Debug = System.Diagnostics.Debug;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ERP.Views;
 
 namespace ERP.ViewModels
 {
+    [QueryProperty("Id", "Id")]
     public partial class ProductDetailsViewModel : BaseViewModel
     {
         [ObservableProperty]
-        Product product;
+        string id;
 
-        ProductsService productsService;
-
-        public ProductDetailsViewModel(ProductsService productsService)
+        public ProductDetailsViewModel()
         {
             Title = "Product";
-            this.productsService = productsService;
         }
-
         [RelayCommand]
-        public async Task GetProductAsync(string id) 
+        public async Task<Product> GetProduct()
         {
-            if (IsBusy)
-                return;
-
-            try
-            {
-                IsBusy = true;
-
-                product = await productsService.GetProduct(id);
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get products: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            ProductsService _service = new();
+            Debug.WriteLine(Id);
+            return await _service.GetProduct(Id);
         }
     }
 }

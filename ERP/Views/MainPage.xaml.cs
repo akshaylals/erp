@@ -1,4 +1,6 @@
-﻿using ERP.Services;
+﻿using CommunityToolkit.Mvvm.Input;
+using ERP.Models;
+using ERP.Services;
 using ERP.ViewModels;
 using Debug = System.Diagnostics.Debug;
 
@@ -43,13 +45,9 @@ public partial class MainPage : ContentPage
 
     private async void SwipeShowProduct(object sender, SwipedEventArgs e)
     {
-        var data = e.Parameter.ToString();
-        ProductsService service = new();
-        ProductDetailsViewModel vm = new(service);
-        await vm.GetProductAsync(data);
-        await Shell.Current.GoToAsync(nameof(ProductDetailsPage), true, new Dictionary<string, object> {
-            { "viewModel", vm }
-        });
+        var id = e.Parameter;
+        await Shell.Current.GoToAsync($"{nameof(ProductDetailsPage)}?Id={id}");
     }
+
 }
 
