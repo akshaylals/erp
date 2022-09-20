@@ -1,4 +1,6 @@
 ﻿using ERP.Models;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace ERP.Services
@@ -27,6 +29,21 @@ namespace ERP.Services
             }
 
             return productList;
+        }
+
+        public async Task<Product> GetProduct(string id)
+        {
+            var response = await httpClient.GetAsync($"{Constants.productsEndpoint}/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                Product product = await response.Content.ReadFromJsonAsync<Product>();
+                return product;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

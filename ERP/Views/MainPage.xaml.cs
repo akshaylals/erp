@@ -41,9 +41,15 @@ public partial class MainPage : ContentPage
         await cartService.PostCartProduct(data);
     }
 
-    private void SwipeShowProduct(object sender, SwipedEventArgs e)
+    private async void SwipeShowProduct(object sender, SwipedEventArgs e)
     {
         var data = e.Parameter.ToString();
+        ProductsService service = new();
+        ProductDetailsViewModel vm = new(service);
+        await vm.GetProductAsync(data);
+        await Shell.Current.GoToAsync(nameof(ProductDetailsPage), true, new Dictionary<string, object> {
+            { "viewModel", vm }
+        });
     }
 }
 
