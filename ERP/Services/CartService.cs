@@ -19,9 +19,6 @@ namespace ERP.Services
 
         public async Task<List<Product>> GetCartProducts()
         {
-            if (cartProductList?.Count > 0)
-                return cartProductList;
-
             var response = await httpClient.GetAsync(Constants.cartEndpoint);
 
             if (response.IsSuccessStatusCode)

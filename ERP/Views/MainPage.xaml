@@ -8,6 +8,13 @@
     x:DataType="viewmodels:ProductsViewModel"
     Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="&#128722;"
+                     Priority="1"
+                     Order="Secondary"
+                     Clicked="CartPageFn"/>
+    </ContentPage.ToolbarItems>
+
 
     <Grid
         ColumnDefinitions="*,*"
@@ -16,7 +23,6 @@
         RowSpacing="0">
         <CollectionView ItemsSource="{Binding Products}"
                          SelectionMode="None"
-                         Margin="0,0,0,60"
                          Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
@@ -71,21 +77,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button
-            HeightRequest="60"
-            Grid.ColumnSpan="2"
-            BackgroundColor="White"
-            TextColor="Black"
-            Text="Cart"
-            HorizontalOptions="Fill"
-            VerticalOptions="End">
-            <Button.GestureRecognizers>
-                <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop_1"></DropGestureRecognizer>
-                <TapGestureRecognizer Tapped="CartPageFn"></TapGestureRecognizer>
-            </Button.GestureRecognizers>
-            
-        </Button>
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
