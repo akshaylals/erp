@@ -17,6 +17,8 @@ namespace ERP.ViewModels
         [ObservableProperty]
         Product product;
 
+
+
         public ProductDetailsViewModel()
         {
             Title = "Product";

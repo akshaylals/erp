@@ -35,7 +35,7 @@
                                          />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
-                            <Frame ClassId="{Binding Id}" Style="{StaticResource CardView}">
+                            <Frame ClassId="{Binding Id}">
                                 <Frame.GestureRecognizers>
                                     <SwipeGestureRecognizer Direction="Left" Swiped="SwipeDeleteCart" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
                                     <SwipeGestureRecognizer Direction="Right" Swiped="SwipeShowProduct" CommandParameter="{Binding Id}" Threshold="250000"></SwipeGestureRecognizer>
@@ -47,10 +47,10 @@
                                     <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Title}" />
+                                        <Label Text="{Binding Title}" />
                                         <HorizontalStackLayout>
                                             <Label Text="$"/>
-                                            <Label Style="{StaticResource SmallLabel}" Text="{Binding Price}" />
+                                            <Label Text="{Binding Price}" />
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>
                                 </Grid>
