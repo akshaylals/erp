@@ -14,16 +14,19 @@ namespace ERP.ViewModels
         [ObservableProperty]
         string id;
 
+        [ObservableProperty]
+        Product product;
+
         public ProductDetailsViewModel()
         {
             Title = "Product";
+            Debug.WriteLine("vm");
         }
-        [RelayCommand]
-        public async Task<Product> GetProduct()
+        
+        public async Task GetProduct()
         {
             ProductsService _service = new();
-            Debug.WriteLine(Id);
-            return await _service.GetProduct(Id);
+            product = await _service.GetProduct(Id);
         }
     }
 }
