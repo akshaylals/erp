@@ -4,11 +4,9 @@
              xmlns:viewmodels="clr-namespace:ERP.ViewModels"
              x:Class="ERP.Views.ProductDetailsPage"
              x:DataType="viewmodels:ProductDetailsViewModel"
-             Title="{Binding Product.Title}">
+             Title="{Binding Title}">
     <StackLayout>
-        <Image Aspect="AspectFill" Source="{Binding Product.Image}"
-                                       WidthRequest="125"
-                                       HeightRequest="125"/>
-        <Label Text="{Binding Product.Description}"/>
+        <Image Source="{Binding Product.Image}"/>
+        <Label Padding="20" Text="{Binding Product.Description}"/>
     </StackLayout>
 </ContentPage>
