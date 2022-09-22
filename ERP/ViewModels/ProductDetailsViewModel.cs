@@ -17,18 +17,18 @@ namespace ERP.ViewModels
         [ObservableProperty]
         Product product;
 
+        ProductsService productsService;
 
-
-        public ProductDetailsViewModel()
+        public ProductDetailsViewModel(ProductsService productsService)
         {
-            Title = "Product";
+            Title = "Product Details";
+            this.productsService = productsService;
             Debug.WriteLine("vm");
         }
         
         public async Task GetProduct()
         {
-            ProductsService _service = new();
-            product = await _service.GetProduct(Id);
+            product = await productsService.GetProduct(Id);
         }
     }
 }

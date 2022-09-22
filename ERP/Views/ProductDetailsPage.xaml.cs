@@ -6,10 +6,8 @@ namespace ERP.Views;
 
 public partial class ProductDetailsPage : ContentPage
 {
-	ProductDetailsViewModel viewModel;
 	public ProductDetailsPage(ProductDetailsViewModel viewModel)
 	{
-		this.viewModel = viewModel;
 		InitializeComponent();
 		Debug.WriteLine("Page");
 		//viewModel.GetProductCommand.Execute(viewModel);

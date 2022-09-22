@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Debug = System.Diagnostics.Debug;
 
 namespace ERP.Services
 {
@@ -23,10 +24,14 @@ namespace ERP.Services
             
             var response = await httpClient.GetAsync(Constants.productsEndpoint);
 
+            Debug.WriteLine("Response : ", response);
+
             if (response.IsSuccessStatusCode)
             {
                 productList = await response.Content.ReadFromJsonAsync<List<Product>>();
             }
+
+            Debug.WriteLine("Products : ", productList);
 
             return productList;
         }
@@ -34,6 +39,8 @@ namespace ERP.Services
         public async Task<Product> GetProduct(string id)
         {
             var response = await httpClient.GetAsync($"{Constants.productsEndpoint}/{id}");
+
+
 
             if (response.IsSuccessStatusCode)
             {
