@@ -5,10 +5,10 @@
              x:Class="ERP.Views.ProductDetailsPage"
              x:DataType="viewmodels:ProductDetailsViewModel"
              Title="{Binding Product.Title}">
-    <VerticalStackLayout>
+    <StackLayout>
         <Image Aspect="AspectFill" Source="{Binding Product.Image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>
         <Label Text="{Binding Product.Description}"/>
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

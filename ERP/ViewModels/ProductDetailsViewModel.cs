@@ -25,7 +25,15 @@ namespace ERP.ViewModels
             this.productsService = productsService;
             Debug.WriteLine("vm");
         }
-        
+
+        //[RelayCommand]
+        //public async Task<Product> GetProduct()
+        //{
+        //    ProductsService _service = new();
+        //    Debug.WriteLine(Id);
+        //    return await _service.GetProduct(Id);
+        //}
+
         public async Task GetProduct()
         {
             product = await productsService.GetProduct(Id);

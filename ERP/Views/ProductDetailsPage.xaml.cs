@@ -18,5 +18,5 @@ public partial class ProductDetailsPage : ContentPage
 	{
 		base.OnAppearing();
 		await (BindingContext as ProductDetailsViewModel).GetProduct();
-    }
+	}
 }
