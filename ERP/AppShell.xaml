@@ -12,21 +12,4 @@
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage"/>
 
-    
-
-    <!--
-    <TabBar>
-        <ShellContent
-        Shell.NavBarIsVisible="True"
-        Title="Products"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage"
-        Icon="icon_products" />
-
-        <ShellContent
-            Title="Cart"
-            ContentTemplate="{DataTemplate views:CartPage}"
-            Icon="icon_cart" />
-    </TabBar>
-    -->
 </Shell>

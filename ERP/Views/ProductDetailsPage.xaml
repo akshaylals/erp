@@ -4,16 +4,15 @@
              xmlns:viewmodels="clr-namespace:ERP.ViewModels"
              x:Class="ERP.Views.ProductDetailsPage"
              x:DataType="viewmodels:ProductDetailsViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Product.Title}">
     <ScrollView>
-        <StackLayout>
-            <Label HorizontalTextAlignment="Center" FontSize="Header" Padding="20" Text="{Binding Product.Title}"/>
+        <VerticalStackLayout>
             <Image Source="{Binding Product.Image}"/>
             <Label FontSize="Body" Padding="20" Text="{Binding Product.Description}"/>
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="20">
                 <Label FontSize="Large" Text="$"/>
                 <Label FontSize="Large" Text="{Binding Product.Price}" />
             </HorizontalStackLayout>
-        </StackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

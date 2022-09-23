@@ -9,14 +9,6 @@ public partial class ProductDetailsPage : ContentPage
 	public ProductDetailsPage(ProductDetailsViewModel viewModel)
 	{
 		InitializeComponent();
-		Debug.WriteLine("Page");
-		//viewModel.GetProductCommand.Execute(viewModel);
 		BindingContext = viewModel;
-	}
-
-	protected async override void OnAppearing()
-	{
-		base.OnAppearing();
-		await (BindingContext as ProductDetailsViewModel).GetProduct();
 	}
 }
