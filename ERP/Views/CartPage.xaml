@@ -42,7 +42,7 @@
                                                             CommandParameter="{Binding Id}" 
                                                             Threshold="250000"/>
                                     <SwipeGestureRecognizer Direction="Right"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsViewModel}}, Path=GoToDetailsCommand}"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartViewModel}}, Path=GoToDetailsCommand}"
                                                             CommandParameter="{Binding .}" 
                                                             Threshold="250000"/>
                                 </Frame.GestureRecognizers>

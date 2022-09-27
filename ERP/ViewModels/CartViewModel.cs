@@ -1,6 +1,7 @@
 ﻿using ERP.Models;
 using ERP.ViewModel;
 using ERP.Services;
+using ERP.Views;
 using System.Collections.ObjectModel;
 using Debug = System.Diagnostics.Debug;
 using CommunityToolkit.Mvvm.Input;
@@ -46,6 +47,20 @@ namespace ERP.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        [RelayCommand]
+        async Task GoToDetails(Product product)
+        {
+            if (product == null)
+                return;
+
+            await Shell.Current.GoToAsync(nameof(ProductDetailsPage), true, new Dictionary<string, object>
+            {
+                {
+                    "Product", product
+                }
+            });
         }
     }
 }
