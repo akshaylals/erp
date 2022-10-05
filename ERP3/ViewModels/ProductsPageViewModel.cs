@@ -8,6 +8,9 @@ public partial class ProductsPageViewModel : AppViewModelBase
     [ObservableProperty]
     private int cartCount;
 
+    [ObservableProperty]
+    private bool cartBadgeVisible;
+
     public ProductsPageViewModel(IApiService appApiService) : base(appApiService)
     {
         this.Title = "Products";
@@ -49,7 +52,17 @@ public partial class ProductsPageViewModel : AppViewModelBase
     public async Task GetCartCount()
     {
         CartCount = await _appApiService.GetCartCount();
+        if(CartCount == 0)
+        {
+            CartBadgeVisible = false;
+        }
+        else
+        {
+            CartBadgeVisible = true;
+        }
     }
+
+    
 
     public override async void OnNavigatedTo(object parameters)
     {
