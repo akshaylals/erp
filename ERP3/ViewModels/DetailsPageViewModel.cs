@@ -23,13 +23,13 @@ public partial class DetailsPageViewModel : AppViewModelBase
             Product = await _appApiService.GetProduct(productID);
 
             this.DataLoaded = true;
-        }catch (InternetConnectionException iex)
+        }catch (InternetConnectionException)
         {
             this.IsErrorState = true;
             this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
             ErrorImage = "nointernet.png";
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             this.IsErrorState = true;
             this.ErrorMessage = $"Something went wrong.";

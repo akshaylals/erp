@@ -32,19 +32,19 @@ public partial class CartPageViewModel : AppViewModelBase
 
             this.DataLoaded = true;
         }
-        catch (InternetConnectionException iex)
+        catch (InternetConnectionException)
         {
             this.IsErrorState = true;
             this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
             ErrorImage = "nointernet.png";
         }
-        catch (EmptyCartException eex)
+        catch (EmptyCartException)
         {
             this.IsErrorState = true;
             this.ErrorMessage = $"No items in cart.";
             ErrorImage = "emptycart.png";
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             this.IsErrorState = true;
             this.ErrorMessage = $"Something went wrong.";
