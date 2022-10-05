@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<baseviews:ViewBase
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:baseviews="clr-namespace:ERP3.Views.Base"
+    xmlns:viewmodels="clr-namespace:ERP3.ViewModels"
+    xmlns:models="clr-namespace:ERP3.Models"
+    xmlns:controls="http://www.tsjdev-apps.de/maui/controls"
+    x:Class="ERP3.Views.CartPage"
+    x:TypeArguments="viewmodels:CartPageViewModel"
+    x:DataType="viewmodels:CartPageViewModel"
+    PageTitle="{Binding Title, Mode=OneWay}"
+    PageMode="Navigate"
+    ContentDisplayMode="NavigationBar"
+    x:Name="CartPg">
+
+    <!--<baseviews:ViewBase.PageIcons>
+        <ImageButton
+            x:Name="CartBtn"
+            Style="{StaticResource IconButtonStyle}"
+            Source="icncart.png"
+            Clicked="CartBtn_Clicked"/>
+    </baseviews:ViewBase.PageIcons>-->
+
+    <baseviews:ViewBase.PageContent>
+
+        <CollectionView ItemsSource="{Binding CartItems, Mode=OneWay}"
+                         SelectionMode="None"
+                         Margin="0,0,0,60"
+                         IsVisible="{Binding DataLoaded, Mode=OneWay}"
+                         Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:CartItem">
+                    <Grid Padding="10">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Details"
+                                           BackgroundColor="Green"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame ClassId="{Binding Product.Id}">
+                                <Frame.GestureRecognizers>
+                                    <SwipeGestureRecognizer Direction="Left" 
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=DeleteFromCartCommand}"
+                                                            CommandParameter="{Binding Id}" 
+                                                            Threshold="250000"/>
+                                    <SwipeGestureRecognizer Direction="Right"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                                            CommandParameter="{Binding Product.Id}" 
+                                                            Threshold="250000"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFill" Source="{Binding Product.Image}"
+                                       WidthRequest="125"
+                                       HeightRequest="125"/>
+                                    <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                        <Label Text="{Binding Product.Title}" />
+                                        <HorizontalStackLayout>
+                                            <Label Text="$"/>
+                                            <Label Text="{Binding Product.Price}" />
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout>
+                                            <controls:SimpleRatingControl Amount="5"
+                                                CurrentValue="{Binding Product.Rating.Rate}"
+                                                AccentColor="Gold"
+                                                FontSize="16"
+                                                RatingType="Star" />
+                                            <Label Text="("/>
+                                            <Label Text="{Binding Product.Rating.Count}"/>
+                                            <Label Text=")"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </baseviews:ViewBase.PageContent>
+
+</baseviews:ViewBase>
