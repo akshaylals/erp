@@ -30,6 +30,15 @@ namespace ERP3.Services
             }
         }
 
+        public async Task<int> GetCartCount()
+        {
+            var resourceUri = "cart";
+
+            var result = await GetAsync<List<CartItemAPI>>(resourceUri);
+
+            return result.Count;
+        }
+
         public async Task<CartItemAPI> GetCartItem(string cartItemID)
         {
             var resourceUri = $"cart/{cartItemID}";

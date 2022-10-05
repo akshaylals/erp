@@ -44,9 +44,15 @@ public partial class ProductsPageViewModel : AppViewModelBase
 
     }
 
+    public async Task GetCartCount()
+    {
+        System.Diagnostics.Debug.WriteLine($"Products Page: Cart Count: {await _appApiService.GetCartCount()}");
+    }
+
     public override async void OnNavigatedTo(object parameters)
     {
         await GetProducts();
+        await GetCartCount();
     }
 
     [RelayCommand]
@@ -65,5 +71,6 @@ public partial class ProductsPageViewModel : AppViewModelBase
     private async Task AddToCart(int id)
     {
         await _appApiService.PostCartItem(id);
+        await GetCartCount();
     }
 }

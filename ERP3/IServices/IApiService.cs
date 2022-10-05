@@ -8,4 +8,5 @@ public interface IApiService
     Task<List<CartItemAPI>> GetCartItems();
     Task PostCartItem(int productID);
     Task DeleteCartItem(int cartItemID);
+    Task<int> GetCartCount();
 }
