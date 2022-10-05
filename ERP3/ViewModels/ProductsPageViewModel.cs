@@ -1,11 +1,13 @@
-﻿using ERP3.Models;
-
-namespace ERP3.ViewModels;
+﻿namespace ERP3.ViewModels;
 
 public partial class ProductsPageViewModel : AppViewModelBase
 {
     [ObservableProperty]
     private ObservableCollection<Product> products;
+
+    [ObservableProperty]
+    private int cartCount;
+
     public ProductsPageViewModel(IApiService appApiService) : base(appApiService)
     {
         this.Title = "Products";
@@ -46,7 +48,7 @@ public partial class ProductsPageViewModel : AppViewModelBase
 
     public async Task GetCartCount()
     {
-        System.Diagnostics.Debug.WriteLine($"Products Page: Cart Count: {await _appApiService.GetCartCount()}");
+        CartCount = await _appApiService.GetCartCount();
     }
 
     public override async void OnNavigatedTo(object parameters)
