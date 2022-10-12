@@ -4,13 +4,13 @@
              xmlns:local="clr-namespace:ERP3"
              x:Class="ERP3.App">
     <Application.Resources>
-
+ 
         <!-- Colors -->
-        <Color x:Key="PageBackgroundColor">#262626</Color>
+        <Color x:Key="PageBackgroundColor">#F2F2F2</Color>
         <Color x:Key="DarkColor">#2F2F2F</Color>
         <Color x:Key="LightColor">#979797</Color>
         <Color x:Key="DarkTextColor">#151515</Color>
-        <Color x:Key="LightTextColor">#F5F5F5</Color>
+        <Color x:Key="LightTextColor">#2F2F2F</Color>
 
         <Color x:Key="LightBorderColor">#A5A5A5</Color>
 

@@ -6,4 +6,10 @@ public partial class ProductsPage : ViewBase<ProductsPageViewModel>
 	{
 		InitializeComponent();
 	}
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		ViewModel.GetCartCount();
+	}
 }
