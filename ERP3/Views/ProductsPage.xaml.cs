@@ -12,4 +12,10 @@ public partial class ProductsPage : ViewBase<ProductsPageViewModel>
 		base.OnAppearing();
 		ViewModel.GetCartCount();
 	}
+
+	public void FlyToCartAnimation(object obj, SwipedEventArgs e)
+	{
+		Frame frame = (Frame)obj;
+		ViewModel.ShowAnimation(-200, 600, 170, 40);
+	}
 }

@@ -59,7 +59,8 @@
                                     <SwipeGestureRecognizer Direction="Left" 
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsPageViewModel}}, Path=AddToCartCommand}"
                                                             CommandParameter="{Binding Id}" 
-                                                            Threshold="250000"/>
+                                                            Threshold="250000"
+                                                            Swiped="FlyToCartAnimation" />
                                     <SwipeGestureRecognizer Direction="Right"
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsPageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                             CommandParameter="{Binding Id}" 
@@ -68,7 +69,7 @@
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
-                                       HeightRequest="125"/>
+                                       HeightRequest="125" />
                                     <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">

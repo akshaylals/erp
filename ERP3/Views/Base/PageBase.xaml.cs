@@ -121,6 +121,7 @@ public partial class PageBase : ContentPage
     }
     #endregion
 
+    public Image dImage;
 
     public PageBase()
     {
@@ -134,5 +135,6 @@ public partial class PageBase : ContentPage
 
         //Set Content Display Mode
         SetContentDisplayMode(ContentDisplayMode.NoNavigationBar);
+        dImage = dummyImage;
     }
 }

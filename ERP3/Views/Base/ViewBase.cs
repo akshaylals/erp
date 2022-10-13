@@ -35,6 +35,8 @@ public class ViewBase<TViewModel> : PageBase where TViewModel : AppViewModelBase
             ViewModel.OnNavigatedTo(ViewModelParameters);
 
             _isLoaded = true;
+
+            ViewModel.dummyImage = dImage;
         }
     }
 

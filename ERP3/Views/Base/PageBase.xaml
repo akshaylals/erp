@@ -39,6 +39,10 @@
             VerticalOptions="Center" />
 
 
+        <!-- Cart Animation -->
+        <Image x:Name="dummyImage"
+               Source="icncart.png" 
+               IsVisible="False" />
 
 
         <!-- Page Header -->
