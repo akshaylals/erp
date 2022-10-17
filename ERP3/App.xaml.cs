@@ -6,6 +6,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new ProductsPage());
+		//MainPage = new NavigationPage(new ProductsPage());
+		MainPage = new AppShell();
 	}
 }
