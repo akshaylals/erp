@@ -67,7 +67,7 @@
             <Setter Property="WidthRequest" Value="32" />
             <Setter Property="Padding" Value="{OnPlatform Android=4, Default=6}" />
             <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="Margin" Value="12,3" />
+            <Setter Property="Margin" Value="0,3" />
             <Setter Property="Aspect" Value="AspectFit" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -139,7 +139,7 @@
 
         <!-- Page Header Style -->
         <Style TargetType="Label" x:Key="PageHeaderTextStyle" BasedOn="{StaticResource BaseMediumLightLabelTextStyle}">
-            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontSize" Value="18" />
         </Style>
 
 

@@ -48,7 +48,7 @@
         <!-- Page Header -->
         <Grid
             Grid.Row="1"
-            ColumnDefinitions="56,*,56"
+            ColumnDefinitions=".1*,.6*,.3*"
             Margin="0,4"
             IgnoreSafeArea="True">
 
@@ -85,9 +85,10 @@
                 Grid.Column="1"
                 x:Name="TitleLabel"
                 IsVisible="False"
+                TextColor="#1A5EA2"
                 VerticalOptions="Center"
                 HorizontalOptions="Fill"
-                HorizontalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
                 VerticalTextAlignment="Center"
                 Margin="6,0,6,-1"
                 Style="{StaticResource PageHeaderTextStyle}" />
@@ -96,9 +97,33 @@
             <Grid
                 x:Name="PageIconsGrid"
                 Grid.Column="2"
+                ColumnDefinitions=".1*,.1*,.1*,.1*,.1*"
                 Margin="0,4"
                 VerticalOptions="Center"
-                HorizontalOptions="End" />
+                HorizontalOptions="End">
+
+                <ImageButton 
+                    Grid.Column="2"
+                    Source="icnhelp.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+                <ImageButton 
+                    Grid.Column="3"
+                    Source="icnnotification.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+                <ImageButton 
+                    Grid.Column="4"
+                    Source="icnlogout.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+            </Grid>
 
         </Grid>
 
