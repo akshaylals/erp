@@ -1,4 +1,4 @@
-namespace ERP3.Views;
+namespace ERP3;
 
 public partial class AppShell : TabbedPage
 {
