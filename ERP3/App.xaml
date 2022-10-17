@@ -23,12 +23,17 @@
 
         <!-- Navigation Page -->
         <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-            <Setter Property="BarBackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+            <Setter Property="BarBackgroundColor" Value="White"/>
             <Setter Property="BarTextColor" Value="White"/>
             <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             <Setter Property="IconColor" Value="White" />
         </Style>
 
+        <!-- Tabbed Page -->
+        <Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
+            <Setter Property="BarBackgroundColor" Value="White"/>
+        </Style>
+        
         <!-- Grid Styles -->
         <Style TargetType="Grid">
             <Setter Property="Padding" Value="0" />

@@ -49,6 +49,8 @@ public static class MauiProgram
         services.AddSingleton<ProductsPageViewModel>();
         services.AddSingleton<CartPageViewModel>();
         services.AddTransient<DetailsPageViewModel>();
+        services.AddTransient<SettingsPageViewModel>();
+        services.AddTransient<MenuPageViewModel>();
 
     }
 }
