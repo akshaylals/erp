@@ -69,7 +69,7 @@
                 HorizontalOptions="Start"
                 Style="{StaticResource IconButtonStyle}"
                 Grid.Column="0"
-                Command="{Binding NavigateBackCommand, Mode=OneWay}" />
+                Command="{Binding NavigateBackToShellCommand, Mode=OneWay}" />
 
             <ImageButton
                 x:Name="CloseButton"

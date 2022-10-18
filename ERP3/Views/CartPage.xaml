@@ -10,7 +10,7 @@
     x:TypeArguments="viewmodels:CartPageViewModel"
     x:DataType="viewmodels:CartPageViewModel"
     PageTitle="{Binding Title, Mode=OneWay}"
-    PageMode="Navigate"
+    PageMode="NoIcons"
     ContentDisplayMode="NavigationBar"
     x:Name="CartPg">
 
@@ -26,7 +26,7 @@
 
         <CollectionView ItemsSource="{Binding CartItems, Mode=OneWay}"
                          SelectionMode="None"
-                         Margin="0,0,0,60"
+                         Margin="0,0,0,0"
                          IsVisible="{Binding DataLoaded, Mode=OneWay}"
                          Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>

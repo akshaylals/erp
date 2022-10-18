@@ -21,6 +21,11 @@ public partial class AppViewModelBase : ViewModelBase
         await NavigationService.PopAsync();
 
     [RelayCommand]
+    private async Task NavigateBackToShell() =>
+        ((App)Application.Current).NavigateBack();
+        //await NavigationService.PopAsync();
+
+    [RelayCommand]
     private async Task CloseModal() =>
         await NavigationService.PopModalAsync();
 

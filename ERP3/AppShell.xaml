@@ -5,9 +5,25 @@
             x:Class="ERP3.AppShell"
             BarBackgroundColor="White"
             SelectedTabColor="#B91212">
-    
-    <views:ProductsPage Title="Search" IconImageSource="ic_search.png" />
-    <views:CartPage Title="Estimate" IconImageSource="ic_estimation.png" />
-    <views:SettingsPage Title="Settings" IconImageSource="ic_settings.png" />
-    <views:Menu Title="Menu" IconImageSource="ic_menu.png" />
+
+    <NavigationPage Title="Search" IconImageSource="ic_search.png">
+        <x:Arguments>
+            <views:ProductsPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Estimate" IconImageSource="ic_estimation.png">
+        <x:Arguments>
+            <views:EstimatePage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Settings" IconImageSource="ic_settings.png">
+        <x:Arguments>
+            <views:SettingsPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Menu" IconImageSource="ic_menu.png">
+        <x:Arguments>
+            <views:Menu />
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>

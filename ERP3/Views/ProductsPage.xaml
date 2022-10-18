@@ -32,6 +32,8 @@
     </baseviews:ViewBase.PageIcons>
 
     <baseviews:ViewBase.PageContent>
+        
+        <!-- TODO : Search Bar -->
 
         <CollectionView ItemsSource="{Binding Products}"
                          SelectionMode="None"

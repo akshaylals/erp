@@ -73,7 +73,9 @@ public partial class ProductsPageViewModel : AppViewModelBase
     [RelayCommand]
     private async Task NavigateToCartPage()
     {
-        await NavigationService.PushAsync(new CartPage());
+        System.Diagnostics.Debug.WriteLine(App.Current.MainPage.ToString());
+        ((App)Application.Current).NavigateTo(new CartPage());
+        //await NavigationService.PushAsync(new CartPage());
     }
 
     [RelayCommand]

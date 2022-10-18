@@ -51,6 +51,7 @@ public static class MauiProgram
         services.AddTransient<DetailsPageViewModel>();
         services.AddTransient<SettingsPageViewModel>();
         services.AddTransient<MenuPageViewModel>();
+        services.AddTransient<EstimatePageViewModel>();
 
     }
 }

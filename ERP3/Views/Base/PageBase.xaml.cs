@@ -74,6 +74,11 @@ public partial class PageBase : ContentPage
                 NavigateBackButton.IsVisible = false;
                 CloseButton.IsVisible = true;
                 break;
+            case PageMode.NoIcons:
+                NavigateBackButton.IsVisible = true;
+                PageIconsGrid.IsVisible = false;
+                CloseButton.IsVisible = false;
+                break;
             default:
                 //HamburgerButton.IsVisible = false;
                 NavigateBackButton.IsVisible = false;

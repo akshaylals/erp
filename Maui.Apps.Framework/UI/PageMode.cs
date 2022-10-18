@@ -5,5 +5,6 @@ public enum PageMode
     None,
     Menu,
     Navigate,
-    Modal
+    Modal,
+    NoIcons
 }
