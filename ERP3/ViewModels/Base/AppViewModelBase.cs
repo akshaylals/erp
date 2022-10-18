@@ -17,6 +17,10 @@ public partial class AppViewModelBase : ViewModelBase
     }
 
     [RelayCommand]
+    private async Task LogOut() =>
+        App.Current.MainPage = new LoginPage();
+
+    [RelayCommand]
     private async Task NavigateBack() =>
         await NavigationService.PopAsync();
 

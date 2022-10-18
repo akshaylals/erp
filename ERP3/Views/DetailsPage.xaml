@@ -10,7 +10,7 @@
     x:TypeArguments="viewmodels:DetailsPageViewModel"
     x:DataType="viewmodels:DetailsPageViewModel"
     PageTitle="{Binding Title, Mode=OneWay}"
-    PageMode="Navigate"
+    PageMode="NoIcons"
     ContentDisplayMode="NavigationBar"
     x:Name="DetailsPg">
 

@@ -48,6 +48,7 @@
         <!-- Page Header -->
         <Grid
             Grid.Row="1"
+            BackgroundColor="White"
             ColumnDefinitions=".1*,.6*,.3*"
             Margin="0,4"
             IgnoreSafeArea="True">
@@ -121,7 +122,8 @@
                     Source="icnlogout.png"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
-                    Style="{StaticResource IconButtonStyle}" />
+                    Style="{StaticResource IconButtonStyle}"
+                    Command="{Binding LogOutCommand, Mode=OneWay}"/>
 
             </Grid>
 

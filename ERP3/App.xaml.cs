@@ -9,7 +9,7 @@ public partial class App : Application
 
 		//MainPage = new NavigationPage(new ProductsPage());
 		//MainPage = new NavigationPage(new AppShell());
-		MainPage = new AppShell();
+		MainPage = new LoginPage();
 	}
 
 	public void NavigateTo(Page page)

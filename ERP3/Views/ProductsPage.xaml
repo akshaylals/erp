@@ -32,12 +32,81 @@
     </baseviews:ViewBase.PageIcons>
 
     <baseviews:ViewBase.PageContent>
-        
-        <!-- TODO : Search Bar -->
 
         <CollectionView ItemsSource="{Binding Products}"
                          SelectionMode="None"
                          Grid.ColumnSpan="2">
+
+            <!-- TODO : Search Bar -->
+            <CollectionView.Header>
+                <ContentView>
+
+                    <Border
+                        Padding="12,4"
+                        BackgroundColor="White"
+                        Stroke="Transparent"
+                        HorizontalOptions="Fill"
+                        Margin="0,0,0,12"
+                        HeightRequest="40"
+                        StrokeShape="RoundRectangle 8">
+
+                        <Grid
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*,Auto"
+                            ColumnSpacing="16">
+
+                            <Image
+                                WidthRequest="18"
+                                HeightRequest="18"
+                                Source="ic_search.png"
+                                Grid.Column="0"
+                                VerticalOptions="Center">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                        <!--Command="{Binding SearchVideosCommand}"
+                                        CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}"-->
+
+                                </Image.GestureRecognizers>
+
+                            </Image>
+
+                            <Entry
+                                x:Name="txtSearchQuery"
+                                Keyboard="Chat" 
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Fill"
+                                BackgroundColor="Transparent"
+                                FontSize="16"
+                                TextColor="{StaticResource LightTextColor}"
+                                VerticalTextAlignment="Center" />
+                                <!--Completed="txtSearchQuery_Completed"-->
+
+                            <Image
+                                WidthRequest="18"
+                                HeightRequest="18"
+                                Source="ic_close.png"
+                                Grid.Column="2"
+                                VerticalOptions="Center">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                    <!--Command="{Binding SearchVideosCommand}"
+                                        CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}"-->
+
+                                </Image.GestureRecognizers>
+
+                            </Image>
+
+                        </Grid>
+
+                    </Border>
+
+                </ContentView>
+            </CollectionView.Header>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid Padding="10">
