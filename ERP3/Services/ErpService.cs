@@ -80,6 +80,15 @@ namespace ERP3.Services
             return result;
         }
 
+        public async Task<List<Product>> GetProducts(string search)
+        {
+            var resourceUri = $"products?title_like={search}";
+
+            var result = await GetAsync<List<Product>>(resourceUri);
+
+            return result;
+        }
+
         public async Task PostCartItem(int productId)
         {
             var cartUri = "cart";
