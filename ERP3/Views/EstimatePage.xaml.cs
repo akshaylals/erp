@@ -16,7 +16,7 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
     public void FlyToCartAnimation(object obj, SwipedEventArgs e)
     {
         Frame frame = (Frame)obj;
-        ViewModel.ShowAnimation(-200, 600, 82, 40);
+        ViewModel.ShowAnimation(-200, 600, 58, 40);
     }
 
     async void txtSearchQuery_Completed(System.Object sender, System.EventArgs e)

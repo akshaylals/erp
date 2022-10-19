@@ -14,8 +14,7 @@
     ContentDisplayMode="NavigationBar" >
 
     <baseviews:ViewBase.PageIcons>
-        <Grid 
-            Grid.Column="0">
+        <Grid>
             <Label IsVisible="{Binding CartBadgeVisible}"
                    Text="{Binding CartCount}" 
                    BackgroundColor="#B91212"
@@ -144,12 +143,12 @@
                             <Frame ClassId="{Binding Id}">
                                 <Frame.GestureRecognizers>
                                     <SwipeGestureRecognizer Direction="Left" 
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsPageViewModel}}, Path=AddToCartCommand}"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=AddToCartCommand}"
                                                             CommandParameter="{Binding Id}" 
                                                             Threshold="250000"
                                                             Swiped="FlyToCartAnimation" />
                                     <SwipeGestureRecognizer Direction="Right"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                             CommandParameter="{Binding Id}" 
                                                             Threshold="250000"/>
                                 </Frame.GestureRecognizers>
