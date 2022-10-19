@@ -2,7 +2,8 @@
 
 public partial class App : Application
 {
-	Page tempPage;
+	List<Page> navStack = new();
+
 	public App()
 	{
 		InitializeComponent();
@@ -14,13 +15,14 @@ public partial class App : Application
 
 	public void NavigateTo(Page page)
 	{
-		this.tempPage = this.MainPage;
+		this.navStack.Add(this.MainPage);
 		this.MainPage = page;
 	}
 
 	public void NavigateBack()
 	{
-		this.MainPage = this.tempPage;
-	}
+		this.MainPage = navStack[navStack.Count - 1];
+		navStack.RemoveAt(navStack.Count - 1);
+    }
 
 }
