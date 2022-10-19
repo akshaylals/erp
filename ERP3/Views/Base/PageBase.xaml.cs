@@ -74,6 +74,11 @@ public partial class PageBase : ContentPage
                 NavigateBackButton.IsVisible = false;
                 CloseButton.IsVisible = true;
                 break;
+            case PageMode.Filter:
+                NavigateBackButton.IsVisible = true;
+                PageIconsGrid.IsVisible = true;
+                CloseButton.IsVisible = false;
+                break;
             case PageMode.NoIcons:
                 NavigateBackButton.IsVisible = true;
                 PageIconsGrid.IsVisible = false;

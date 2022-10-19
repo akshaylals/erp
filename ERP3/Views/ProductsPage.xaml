@@ -16,19 +16,33 @@
 
     <baseviews:ViewBase.PageIcons>
         <Grid>
-            <Label IsVisible="{Binding CartBadgeVisible}"
-                   Text="{Binding CartCount}" 
-                   BackgroundColor="#B91212"
-                   Padding="2"
-                   TextColor="White"
-                   HorizontalOptions="End"
-                   VerticalOptions="Start" />
             <ImageButton
                 x:Name="CartBtn"
                 Style="{StaticResource IconButtonStyle}"
-                Source="icncart.png"
-                Command="{Binding NavigateToCartPageCommand, Mode=OneWay}"/>
+                Source="icnfilter.png"
+                Command="{Binding NavigateToFilterPageCommand, Mode=OneWay}"/>
         </Grid>
+        <ImageButton 
+                    Grid.Column="2"
+                    Source="icnhelp.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+        <ImageButton 
+                    Grid.Column="3"
+                    Source="icnnotification.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+        <ImageButton 
+                    Grid.Column="4"
+                    Source="icnlogout.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}"
+                    Command="{Binding LogOutCommand, Mode=OneWay}"/>
     </baseviews:ViewBase.PageIcons>
 
     <baseviews:ViewBase.PageContent>

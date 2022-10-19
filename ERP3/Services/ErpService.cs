@@ -82,9 +82,19 @@ namespace ERP3.Services
 
         public async Task<List<Product>> GetProducts(string search)
         {
+            if (search == "")
+            {
+                throw new EmptySearchException();
+            }
+
             var resourceUri = $"products?title_like={search}";
 
             var result = await GetAsync<List<Product>>(resourceUri);
+
+            if (result.Count == 0)
+            {
+                throw new EmptySearchException();
+            }
 
             return result;
         }

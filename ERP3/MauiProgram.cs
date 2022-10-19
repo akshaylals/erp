@@ -48,10 +48,12 @@ public static class MauiProgram
         //Register View Models
         services.AddSingleton<ProductsPageViewModel>();
         services.AddSingleton<CartPageViewModel>();
+        services.AddSingleton<SettingsPageViewModel>();
+        services.AddSingleton<MenuPageViewModel>();
+        services.AddSingleton<EstimatePageViewModel>();
+        services.AddSingleton<FilterPageViewModel>();
+        
         services.AddTransient<DetailsPageViewModel>();
-        services.AddTransient<SettingsPageViewModel>();
-        services.AddTransient<MenuPageViewModel>();
-        services.AddTransient<EstimatePageViewModel>();
 
     }
 }

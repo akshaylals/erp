@@ -12,7 +12,31 @@
     PageMode="Menu"
     ContentDisplayMode="NavigationBar" >
 
-    <baseviews:ViewBase.PageContent>
+    <baseviews:ViewBase.PageIcons>
+        <ImageButton 
+                    Grid.Column="2"
+                    Source="icnhelp.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+        <ImageButton 
+                    Grid.Column="3"
+                    Source="icnnotification.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}" />
+
+        <ImageButton 
+                    Grid.Column="4"
+                    Source="icnlogout.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}"
+                    Command="{Binding LogOutCommand, Mode=OneWay}"/>
+    </baseviews:ViewBase.PageIcons>
+
+<baseviews:ViewBase.PageContent>
         <Label Text="Settings" />
     </baseviews:ViewBase.PageContent>
 </baseviews:ViewBase>

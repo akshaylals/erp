@@ -6,5 +6,6 @@ public enum PageMode
     Menu,
     Navigate,
     Modal,
+    Filter,
     NoIcons
 }

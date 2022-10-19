@@ -15,7 +15,7 @@ public partial class ProductsPageViewModel : AppViewModelBase
 
     public ProductsPageViewModel(IApiService appApiService) : base(appApiService)
     {
-        this.Title = "Products";
+        this.Title = "Search Data";
     }
 
     private async Task Search()
@@ -159,11 +159,11 @@ public partial class ProductsPageViewModel : AppViewModelBase
     }
 
     [RelayCommand]
-    private async Task NavigateToCartPage()
+    private async Task NavigateToFilterPage()
     {
-        System.Diagnostics.Debug.WriteLine(App.Current.MainPage.ToString());
-        ((App)Application.Current).NavigateTo(new CartPage());
         //await NavigationService.PushAsync(new CartPage());
+        System.Diagnostics.Debug.WriteLine(App.Current.MainPage.ToString());
+        ((App)Application.Current).NavigateTo(new FilterPage());
     }
 
     [RelayCommand]

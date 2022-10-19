@@ -103,28 +103,6 @@
                 VerticalOptions="Center"
                 HorizontalOptions="End">
 
-                <ImageButton 
-                    Grid.Column="2"
-                    Source="icnhelp.png"
-                    VerticalOptions="Center"
-                    HorizontalOptions="End"
-                    Style="{StaticResource IconButtonStyle}" />
-
-                <ImageButton 
-                    Grid.Column="3"
-                    Source="icnnotification.png"
-                    VerticalOptions="Center"
-                    HorizontalOptions="End"
-                    Style="{StaticResource IconButtonStyle}" />
-
-                <ImageButton 
-                    Grid.Column="4"
-                    Source="icnlogout.png"
-                    VerticalOptions="Center"
-                    HorizontalOptions="End"
-                    Style="{StaticResource IconButtonStyle}"
-                    Command="{Binding LogOutCommand, Mode=OneWay}"/>
-
             </Grid>
 
         </Grid>
