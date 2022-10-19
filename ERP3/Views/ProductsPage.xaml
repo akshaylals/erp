@@ -64,9 +64,9 @@
                                 VerticalOptions="Center">
 
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer />
-                                        <!--Command="{Binding SearchVideosCommand}"
-                                        CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}"-->
+                                    <TapGestureRecognizer
+                                    Command="{Binding SearchProductsCommand}"
+                                    CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}" />
 
                                 </Image.GestureRecognizers>
 
@@ -74,31 +74,22 @@
 
                             <Entry
                                 x:Name="txtSearchQuery"
-                                Keyboard="Chat" 
                                 Grid.Column="1"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Fill"
                                 BackgroundColor="Transparent"
                                 FontSize="16"
                                 TextColor="{StaticResource LightTextColor}"
-                                VerticalTextAlignment="Center" />
-                                <!--Completed="txtSearchQuery_Completed"-->
+                                VerticalTextAlignment="Center" 
+                                Completed="txtSearchQuery_Completed" />
 
-                            <Image
+                            <ImageButton
                                 WidthRequest="18"
                                 HeightRequest="18"
                                 Source="ic_close.png"
                                 Grid.Column="2"
-                                VerticalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer />
-                                    <!--Command="{Binding SearchVideosCommand}"
-                                        CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}"-->
-
-                                </Image.GestureRecognizers>
-
-                            </Image>
+                                VerticalOptions="Center"
+                                Clicked="ClearSearchButton_Clicked" />
 
                         </Grid>
 

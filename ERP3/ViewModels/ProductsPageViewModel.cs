@@ -2,6 +2,8 @@
 
 public partial class ProductsPageViewModel : AppViewModelBase
 {
+    private string searchTerm = "iPhone 14";
+
     [ObservableProperty]
     private ObservableCollection<Product> products;
 
@@ -14,6 +16,78 @@ public partial class ProductsPageViewModel : AppViewModelBase
     public ProductsPageViewModel(IApiService appApiService) : base(appApiService)
     {
         this.Title = "Products";
+    }
+
+    private async Task Search()
+    {
+        SetDataLodingIndicators(true);
+
+        LoadingText = "Hold on while we search for Products...";
+
+        Products = new();
+
+        try
+        {
+            //Search for videos
+            await GetSearchProducts();
+
+            this.DataLoaded = true;
+        }
+        catch (InternetConnectionException iex)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
+            ErrorImage = "nointernet.png";
+        }
+        catch (Exception ex)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = $"Something went wrong. If the problem persists, plz contact support with the error message:" + Environment.NewLine + Environment.NewLine + ex.Message;
+            ErrorImage = "error.png";
+        }
+        finally
+        {
+            SetDataLodingIndicators(false);
+        }
+    }
+
+    private async Task GetSearchProducts()
+    {
+        SetDataLodingIndicators(true);
+
+        LoadingText = "Hold on while we get products...";
+
+        Products = new();
+
+        try
+        {
+            var products = await _appApiService.GetProducts(searchTerm);
+            Products.AddRange(products);
+            this.DataLoaded = true;
+        }
+        catch (InternetConnectionException)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
+            ErrorImage = "nointernet.png";
+        }
+        catch (EmptySearchException)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = $"No search results.";
+            ErrorImage = "emptycart.png";
+        }
+        catch (Exception)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = $"Something went wrong.";
+            ErrorImage = "error.png";
+        }
+        finally
+        {
+            SetDataLodingIndicators(false);
+        }
+
     }
 
     private async Task GetProducts()
@@ -35,6 +109,12 @@ public partial class ProductsPageViewModel : AppViewModelBase
             this.IsErrorState = true;
             this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
             ErrorImage = "nointernet.png";
+        }
+        catch (EmptySearchException)
+        {
+            this.IsErrorState = true;
+            this.ErrorMessage = $"No products to show.";
+            ErrorImage = "emptycart.png";
         }
         catch (Exception)
         {
@@ -68,6 +148,14 @@ public partial class ProductsPageViewModel : AppViewModelBase
     {
         await GetProducts();
         await GetCartCount();
+    }
+
+    [RelayCommand]
+    private async Task SearchProducts(string searchQuery)
+    {
+        searchTerm = searchQuery.Trim();
+
+        await Search();
     }
 
     [RelayCommand]
