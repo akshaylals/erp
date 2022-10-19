@@ -66,6 +66,7 @@ public partial class CartPageViewModel : AppViewModelBase
     private async Task NavigateToDetailsPage(int id)
     {
         ((App)Application.Current).NavigateTo(new DetailsPage($"{id}"));
+        //await NavigationService.PushAsync(new DetailsPage($"{id}"));
     }
 
     [RelayCommand]
