@@ -17,15 +17,32 @@
         <Button
             Grid.Column="3"
             Text="DONE"
-            TextColor="#B91212"/>
+            TextColor="#B91212"
+            Clicked="DoneClicked"/>
         <Button
             Grid.Column="4"
             Text="RESET"
-            TextColor="#B91212"/>
+            TextColor="#B91212"
+            Clicked="ResetClicked"/>
     </baseviews:ViewBase.PageIcons>
 
+
     <baseviews:ViewBase.PageContent>
-        <Label Text="Filter Page" />
+        <VerticalStackLayout x:Name="radioButtons" />
+        <!--<CollectionView ItemsSource="{Binding Categories}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <HorizontalStackLayout>
+                        <RadioButton Content="{Binding .}" 
+                                     CheckedChanged="RadioChanged" 
+                                     GroupName="radioFilter"
+                                     />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+           
+        </CollectionView>-->
     </baseviews:ViewBase.PageContent>
     
 </baseviews:ViewBase>
+

@@ -4,7 +4,7 @@ namespace ERP3.ViewModels;
 
 public partial class EstimatePageViewModel : AppViewModelBase
 {
-    private string searchTerm = "iPhone 14";
+    private string searchTerm = "";
 
     [ObservableProperty]
     private ObservableCollection<Product> products;
@@ -14,6 +14,8 @@ public partial class EstimatePageViewModel : AppViewModelBase
 
     [ObservableProperty]
     private bool cartBadgeVisible;
+
+    FilterStringWrapper filterObj = new();
 
     public EstimatePageViewModel(IApiService appApiService) : base(appApiService)
     {
@@ -30,7 +32,6 @@ public partial class EstimatePageViewModel : AppViewModelBase
 
         try
         {
-            //Search for videos
             await GetSearchProducts();
 
             this.DataLoaded = true;
@@ -63,7 +64,7 @@ public partial class EstimatePageViewModel : AppViewModelBase
 
         try
         {
-            var products = await _appApiService.GetProducts(searchTerm);
+            var products = await _appApiService.GetProducts(searchTerm, filterObj.filterString);
             Products.AddRange(products);
             this.DataLoaded = true;
         }
@@ -123,7 +124,7 @@ public partial class EstimatePageViewModel : AppViewModelBase
     {
         //await NavigationService.PushAsync(new CartPage());
         System.Diagnostics.Debug.WriteLine(App.Current.MainPage.ToString());
-        ((App)Application.Current).NavigateTo(new FilterPage());
+        ((App)Application.Current).NavigateTo(new FilterPage(ref filterObj));
     }
 
     [RelayCommand]

@@ -6,6 +6,7 @@ public interface IApiService
     Task<CartItemAPI> GetCartItem(string cartItemID);
     Task<List<Product>> GetProducts();
     Task<List<Product>> GetProducts(string search);
+    Task<List<Product>> GetProducts(string search, string filter);
     Task<List<CartItemAPI>> GetCartItems();
     Task PostCartItem(int productID);
     Task DeleteCartItem(int cartItemID);

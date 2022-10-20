@@ -13,6 +13,8 @@ public partial class ProductsPageViewModel : AppViewModelBase
     [ObservableProperty]
     private bool cartBadgeVisible;
 
+    FilterStringWrapper filterObj = new();
+
     public ProductsPageViewModel(IApiService appApiService) : base(appApiService)
     {
         this.Title = "Search Data";
@@ -163,7 +165,7 @@ public partial class ProductsPageViewModel : AppViewModelBase
     {
         //await NavigationService.PushAsync(new CartPage());
         System.Diagnostics.Debug.WriteLine(App.Current.MainPage.ToString());
-        ((App)Application.Current).NavigateTo(new FilterPage());
+        ((App)Application.Current).NavigateTo(new FilterPage(ref filterObj));
     }
 
     [RelayCommand]

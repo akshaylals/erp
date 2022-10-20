@@ -99,6 +99,25 @@ namespace ERP3.Services
             return result;
         }
 
+        public async Task<List<Product>> GetProducts(string search, string filter)
+        {
+            if (search == "")
+            {
+                throw new EmptySearchException();
+            }
+
+            var resourceUri = $"products?title_like={search}&category_like={filter}";
+
+            var result = await GetAsync<List<Product>>(resourceUri);
+
+            if (result.Count == 0)
+            {
+                throw new EmptySearchException();
+            }
+
+            return result;
+        }
+
         public async Task PostCartItem(int productId)
         {
             var cartUri = "cart";

@@ -114,6 +114,9 @@
                                 Grid.Column="2"
                                 VerticalOptions="Center"
                                 Clicked="ClearSearchButton_Clicked" />
+                            
+                            
+                            
 
                         </Grid>
 
