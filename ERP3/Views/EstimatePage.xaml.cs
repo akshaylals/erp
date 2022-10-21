@@ -16,6 +16,7 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
         ViewModel.SearchProductsCommand.Execute("");
         ViewModel.GetCartCount();
         ViewModel.FilterString = ViewModel.filterObj.filterString;
+        filterGrid.Children.Clear();
         if (ViewModel.FilterString != "")
         {
             CreateFilterCard();

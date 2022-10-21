@@ -19,14 +19,14 @@ public partial class FilterPage : ViewBase<FilterPageViewModel>
 
 	private void DoneClicked(object sender, EventArgs e)
 	{
-		// return filterstring
         ((App)Application.Current).NavigateBack();
     }
 
     private void ResetClicked(object sender, EventArgs e)
     {
+        lastBtn.IsChecked = false;
 		filterObj.filterString = "";
-		lastBtn.IsChecked = false;
+		System.Diagnostics.Debug.WriteLine($"FilterPage ResetClicked: {filterObj.filterString}");
     }
 
     private void RadioChanged(object sender, EventArgs e)
@@ -45,6 +45,10 @@ public partial class FilterPage : ViewBase<FilterPageViewModel>
 			btn.IsChecked = filterObj.filterString == category;
 			btn.CheckedChanged += RadioChanged;
 			radioButtons.Add(btn);
+			if (btn.IsChecked)
+			{
+				lastBtn = btn;
+			}
 		}
 	}
 }
