@@ -21,6 +21,10 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
         {
             CreateFilterCard();
         }
+        if (txtSearchQuery.Text != null)
+        {
+            ViewModel.SearchProductsCommand.Execute(txtSearchQuery.Text);
+        }
     }
 
     public void FlyToCartAnimation(object obj, SwipedEventArgs e)
