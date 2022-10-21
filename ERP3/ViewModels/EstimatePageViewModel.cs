@@ -15,7 +15,10 @@ public partial class EstimatePageViewModel : AppViewModelBase
     [ObservableProperty]
     private bool cartBadgeVisible;
 
-    FilterStringWrapper filterObj = new();
+    [ObservableProperty]
+    private string filterString;
+
+    public FilterStringWrapper filterObj = new();
 
     public EstimatePageViewModel(IApiService appApiService) : base(appApiService)
     {

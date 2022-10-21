@@ -57,134 +57,157 @@
     </baseviews:ViewBase.PageIcons>
     
     <baseviews:ViewBase.PageContent>
-        <CollectionView ItemsSource="{Binding Products}"
-                         SelectionMode="None"
-                         Grid.ColumnSpan="2">
 
-            <!-- TODO : Search Bar -->
-            <CollectionView.Header>
-                <ContentView>
+        <Grid RowDefinitions="Auto,Auto">
+            <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
 
+                <Grid Grid.Row ="0">
                     <Border
-                        Padding="12,4"
-                        BackgroundColor="White"
-                        Stroke="Transparent"
-                        HorizontalOptions="Fill"
-                        Margin="0,0,0,12"
-                        HeightRequest="40"
-                        StrokeShape="RoundRectangle 8">
+                            Grid.Row="0"
+                            Padding="12,4"
+                            BackgroundColor="White"
+                            Stroke="Transparent"
+                            HorizontalOptions="Fill"
+                            Margin="0,0,0,12"
+                            HeightRequest="40"
+                            StrokeShape="RoundRectangle 8">
 
                         <Grid
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center"
-                            ColumnDefinitions="Auto,*,Auto"
-                            ColumnSpacing="16">
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                ColumnDefinitions="Auto,*,Auto"
+                                ColumnSpacing="16">
 
                             <Image
-                                WidthRequest="18"
-                                HeightRequest="18"
-                                Source="ic_mic.png"
-                                Grid.Column="0"
-                                VerticalOptions="Center">
+                                    WidthRequest="18"
+                                    HeightRequest="18"
+                                    Source="ic_mic.png"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center">
 
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer
-                                    Command="{Binding SearchProductsCommand}"
-                                    CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}" />
+                                        Command="{Binding SearchProductsCommand}"
+                                        CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}" />
 
                                 </Image.GestureRecognizers>
 
                             </Image>
 
                             <Entry
-                                x:Name="txtSearchQuery"
-                                Grid.Column="1"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Fill"
-                                BackgroundColor="Transparent"
-                                FontSize="16"
-                                TextColor="{StaticResource LightTextColor}"
-                                VerticalTextAlignment="Center" 
-                                Completed="txtSearchQuery_Completed" />
+                                    x:Name="txtSearchQuery"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Fill"
+                                    BackgroundColor="Transparent"
+                                    FontSize="16"
+                                    TextColor="{StaticResource LightTextColor}"
+                                    VerticalTextAlignment="Center" 
+                                    Completed="txtSearchQuery_Completed" />
 
                             <ImageButton
-                                WidthRequest="18"
-                                HeightRequest="18"
-                                Source="ic_close.png"
-                                Grid.Column="2"
-                                VerticalOptions="Center"
-                                Clicked="ClearSearchButton_Clicked" />
-                            
-                            
-                            
+                                    WidthRequest="18"
+                                    HeightRequest="18"
+                                    Source="ic_close.png"
+                                    Grid.Column="2"
+                                    VerticalOptions="Center"
+                                    Clicked="ClearSearchButton_Clicked" />
 
                         </Grid>
 
                     </Border>
+                </Grid>
+
+                <Grid 
+                x:Name="filterGrid"
+                Padding ="10, 0, 10, 10"
+                Grid.Row="1">
+
+                </Grid>
+
+            </Grid>
+
+            <CollectionView  Grid.Row="1"
+                         ItemsSource="{Binding Products}"
+                         SelectionMode="None"
+                         Grid.ColumnSpan="2">
+
+                <!-- TODO : Search Bar -->
+                <!--
+            <CollectionView.Header>
+
+                <ContentView>
+
+                    
+
 
                 </ContentView>
-            </CollectionView.Header>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Product">
-                    <Grid Padding="10">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Add to Cart"
+            </CollectionView.Header>-->
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="models:Product">
+
+                        <Grid Padding="10">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Add to Cart"
                                            BackgroundColor="Red"
                                          />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <SwipeView.LeftItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Details"
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Details"
                                            BackgroundColor="Green"
                                          />
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <Frame ClassId="{Binding Id}">
-                                <Frame.GestureRecognizers>
-                                    <SwipeGestureRecognizer Direction="Left" 
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <Frame ClassId="{Binding Id}">
+                                    <Frame.GestureRecognizers>
+                                        <SwipeGestureRecognizer Direction="Left" 
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=AddToCartCommand}"
                                                             CommandParameter="{Binding Id}" 
                                                             Threshold="250000"
                                                             Swiped="FlyToCartAnimation" />
-                                    <SwipeGestureRecognizer Direction="Right"
+                                        <SwipeGestureRecognizer Direction="Right"
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                             CommandParameter="{Binding Id}" 
                                                             Threshold="250000"/>
-                                </Frame.GestureRecognizers>
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Aspect="AspectFill" Source="{Binding Image}"
+                                    </Frame.GestureRecognizers>
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
                                        HeightRequest="125" />
-                                    <VerticalStackLayout
+                                        <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                        <Label Text="{Binding Title}" />
-                                        <HorizontalStackLayout>
-                                            <Label Text="$"/>
-                                            <Label  Text="{Binding Price}" />
-                                        </HorizontalStackLayout>
-                                        <HorizontalStackLayout>
-                                            <controls:SimpleRatingControl Amount="5"
+                                            <Label Text="{Binding Title}" />
+                                            <HorizontalStackLayout>
+                                                <Label Text="$"/>
+                                                <Label  Text="{Binding Price}" />
+                                            </HorizontalStackLayout>
+                                            <HorizontalStackLayout>
+                                                <controls:SimpleRatingControl Amount="5"
                                                 CurrentValue="{Binding Rating.Rate}"
                                                 AccentColor="Gold"
                                                 FontSize="16"
                                                 RatingType="Star" />
-                                            <Label Text="("/>
-                                            <Label Text="{Binding Rating.Count}"/>
-                                            <Label Text=")"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </SwipeView>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                                <Label Text="("/>
+                                                <Label Text="{Binding Rating.Count}"/>
+                                                <Label Text=")"/>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </baseviews:ViewBase.PageContent>
 
 </baseviews:ViewBase>
