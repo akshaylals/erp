@@ -1,14 +1,29 @@
+using IdentityModel.OidcClient;
+
 namespace ERP3.Views;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+	protected OidcClient OidcClient { get; }
+	public LoginPage(OidcClient oidcClient)
 	{
 		InitializeComponent();
+		OidcClient = oidcClient;
 	}
 
-	private void LoginButton_Clicked(object sender, EventArgs e)
+	private async void LoginButton_Clicked(object sender, EventArgs e)
 	{
-		App.Current.MainPage = new AppShell();
+		try
+		{
+			var loginResult = await OidcClient.LoginAsync(new LoginRequest());
+
+			await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");
+			//App.Current.MainPage = new AppShell();
+		}
+        catch (Exception ex)
+		{
+
+			await DisplayAlert("Error", ex.ToString(), "Ok");
+		}
 	}
 }

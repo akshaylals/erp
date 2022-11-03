@@ -1,4 +1,5 @@
-﻿using SimpleRatingControlMaui;
+﻿using IdentityModel.OidcClient;
+using SimpleRatingControlMaui;
 
 namespace ERP3;
 
@@ -55,5 +56,18 @@ public static class MauiProgram
         
         services.AddTransient<DetailsPageViewModel>();
 
+        services.AddTransient<WebAuthenticatorBrowser>();
+        services.AddTransient<OidcClient>(sp => 
+            new OidcClient(new OidcClientOptions
+            {
+                // use your own ngrok url:
+                Authority = "",
+                ClientId = "",
+                RedirectUri = "",
+                Scope = "",
+                ClientSecret = "",
+                Browser = sp.GetRequiredService<WebAuthenticatorBrowser>(),
+            })
+        );
     }
 }
