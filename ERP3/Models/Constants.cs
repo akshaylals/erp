@@ -2,5 +2,5 @@
 
 public static class Constants
 {
-    public static string apiEndpoint = "http://192.168.2.67:3000/";
+    public static string apiEndpoint = "http://localhost:3000/";
 }
