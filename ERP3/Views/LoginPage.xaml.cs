@@ -1,3 +1,4 @@
+using System.Text;
 using IdentityModel.OidcClient;
 
 namespace ERP3.Views;
@@ -25,6 +26,21 @@ public partial class LoginPage : ContentPage
                 var loginResult = await OidcClient.LoginAsync(new LoginRequest());
 
                 Preferences.Set("token", loginResult.AccessToken);
+
+                var sb = new StringBuilder();
+                foreach (var claim in loginResult.User.Claims)
+                {
+                    sb.AppendLine($"{claim.Type}: {claim.Value}");
+                    if (claim.Type == "email")
+                    {
+                        Preferences.Set("email", claim.Value);
+                    }
+                    if (claim.Type == "username")
+                    {
+                        Preferences.Set("username", claim.Value);
+                    }
+                }
+                Console.WriteLine(sb.ToString());
                 //await SecureStorage.Default.SetAsync("token", loginResult.AccessToken);
 
                 //await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");

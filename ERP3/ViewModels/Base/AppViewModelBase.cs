@@ -20,6 +20,8 @@ public partial class AppViewModelBase : ViewModelBase
     private async Task LogOut()
     {
         Preferences.Remove("token");
+        Preferences.Remove("email");
+        Preferences.Remove("username");
         App.Current.MainPage = new LoginPage(((App)Application.Current).OidcClient);
     }
         
