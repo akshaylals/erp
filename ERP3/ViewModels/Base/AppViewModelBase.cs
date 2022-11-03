@@ -18,7 +18,7 @@ public partial class AppViewModelBase : ViewModelBase
 
     [RelayCommand]
     private async Task LogOut() =>
-        App.Current.MainPage = new LoginPage();
+        App.Current.MainPage = new LoginPage(((App)Application.Current).OidcClient);
 
     [RelayCommand]
     private async Task NavigateBack() =>

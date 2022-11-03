@@ -1,5 +1,6 @@
 ﻿using IdentityModel.OidcClient;
 using SimpleRatingControlMaui;
+using static IdentityModel.OidcConstants;
 
 namespace ERP3;
 
@@ -61,12 +62,14 @@ public static class MauiProgram
             new OidcClient(new OidcClientOptions
             {
                 // use your own ngrok url:
-                Authority = "",
-                ClientId = "",
-                RedirectUri = "",
-                Scope = "",
-                ClientSecret = "",
+                Authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/",
+                ClientId = "6inagfr1f90pv903vvtd7out3k",
+                RedirectUri = "erp://",
+                Scope = "openid email profile",
+                ClientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l",
+                Policy = new Policy{Discovery = new IdentityModel.Client.DiscoveryPolicy { ValidateEndpoints = false } },
                 Browser = sp.GetRequiredService<WebAuthenticatorBrowser>(),
+                
             })
         );
     }

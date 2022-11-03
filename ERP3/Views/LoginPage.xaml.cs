@@ -24,6 +24,7 @@ public partial class LoginPage : ContentPage
 		{
 
 			await DisplayAlert("Error", ex.ToString(), "Ok");
+			Console.WriteLine(ex.ToString());
 		}
 	}
 }

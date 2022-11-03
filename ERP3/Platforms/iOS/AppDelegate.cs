@@ -10,7 +10,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 
 	public override bool OpenUrl(UIApplication application, NSUrl url, NSDictionary options)
 	{
-		if(Microsoft.Maui.ApplicationModel.Platform.OpenUrl(application, url, options))
+		if(Platform.OpenUrl(application, url, options))
 			return true;
 
 		return base.OpenUrl(application, url, options);
@@ -18,7 +18,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 
 	public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
 	{
-		if (Microsoft.Maui.Platform.ContinueUserActivity(application, userActivity, completionHandler))
+		if (Platform.ContinueUserActivity(application, userActivity, completionHandler))
 			return true;
 
 		return base.ContinueUserActivity(application, userActivity, completionHandler);

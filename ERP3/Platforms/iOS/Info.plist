@@ -28,16 +28,14 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
-
 	<key>CFBundleURLTypes</key>
-	
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
 			<string>mauiessentials</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bookstore</string>
+				<string>erp</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
