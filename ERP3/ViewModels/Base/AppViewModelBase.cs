@@ -17,8 +17,12 @@ public partial class AppViewModelBase : ViewModelBase
     }
 
     [RelayCommand]
-    private async Task LogOut() =>
+    private async Task LogOut()
+    {
+        Preferences.Remove("token");
         App.Current.MainPage = new LoginPage(((App)Application.Current).OidcClient);
+    }
+        
 
     [RelayCommand]
     private async Task NavigateBack() =>

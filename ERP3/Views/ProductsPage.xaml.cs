@@ -11,8 +11,8 @@ public partial class ProductsPage : ViewBase<ProductsPageViewModel>
 	{
 		base.OnAppearing();
 		ViewModel.GetCartCount();
-        string token = await SecureStorage.Default.GetAsync("token");
-		Console.WriteLine(token);
+
+		//string token = await SecureStorage.Default.GetAsync("token");
     }
 
 	public void FlyToCartAnimation(object obj, SwipedEventArgs e)

@@ -13,20 +13,30 @@ public partial class LoginPage : ContentPage
 
 	private async void LoginButton_Clicked(object sender, EventArgs e)
 	{
-		try
-		{
-			var loginResult = await OidcClient.LoginAsync(new LoginRequest());
 
-            await SecureStorage.Default.SetAsync("token", loginResult.AccessToken);
-
-            //await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");
-			App.Current.MainPage = new AppShell();
+        if (Preferences.ContainsKey("token"))
+        {
+            App.Current.MainPage = new AppShell();
 		}
-        catch (Exception ex)
+		else
 		{
+            try
+            {
+                var loginResult = await OidcClient.LoginAsync(new LoginRequest());
 
-			await DisplayAlert("Error", ex.ToString(), "Ok");
-			Console.WriteLine(ex.ToString());
-		}
+                Preferences.Set("token", loginResult.AccessToken);
+                //await SecureStorage.Default.SetAsync("token", loginResult.AccessToken);
+
+                //await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");
+                App.Current.MainPage = new AppShell();
+            }
+            catch (Exception ex)
+            {
+
+                await DisplayAlert("Error", ex.ToString(), "Ok");
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        
 	}
 }
