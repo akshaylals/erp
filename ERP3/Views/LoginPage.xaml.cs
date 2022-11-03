@@ -17,8 +17,10 @@ public partial class LoginPage : ContentPage
 		{
 			var loginResult = await OidcClient.LoginAsync(new LoginRequest());
 
-			await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");
-			//App.Current.MainPage = new AppShell();
+            await SecureStorage.Default.SetAsync("token", loginResult.AccessToken);
+
+            //await DisplayAlert("Login Result", "Access token is: \n\n" + loginResult.AccessToken, "Close");
+			App.Current.MainPage = new AppShell();
 		}
         catch (Exception ex)
 		{

@@ -7,11 +7,13 @@ public partial class ProductsPage : ViewBase<ProductsPageViewModel>
 		InitializeComponent();
 	}
 
-	protected override void OnAppearing()
+	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 		ViewModel.GetCartCount();
-	}
+        string token = await SecureStorage.Default.GetAsync("token");
+		Console.WriteLine(token);
+    }
 
 	public void FlyToCartAnimation(object obj, SwipedEventArgs e)
 	{
