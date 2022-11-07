@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage
+    x:Class="ERP.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ERP.MVVM.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <NavigationPage Title="Search" IconImageSource="ic_search.png">
+        <x:Arguments>
+            <views:SearchPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Estimate" IconImageSource="ic_estimation.png">
+        <x:Arguments>
+            <views:EstimatePage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Settings" IconImageSource="ic_settings.png">
+        <x:Arguments>
+            <views:SettingsPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Profile" IconImageSource="ic_menu.png">
+        <x:Arguments>
+            <views:ProfilePage />
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>

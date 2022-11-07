@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<baseviews:ViewBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseviews="clr-namespace:ERP.MVVM.Views.Base"
+             xmlns:viewmodels="clr-namespace:ERP.MVVM.ViewModels"
+             x:TypeArguments="viewmodels:DetailsPageViewModel"
+             x:Class="ERP.MVVM.Views.DetailsPage"
+             Title="Details Page">
+
+    <Grid RowDefinitions=".07*,.93*">
+
+        <Grid BackgroundColor="White"
+            ColumnDefinitions=".1*,.9*"
+            Margin="0,4"
+            IgnoreSafeArea="True">
+
+            <ImageButton
+                Source="icnback.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Style="{StaticResource IconButtonStyle}"
+                Grid.Column="0"
+                Clicked="BackClicked"/>
+
+            <Label
+                Grid.Column="1"
+                x:Name="TitleLabel"
+                Style="{StaticResource PageHeaderTextStyle}"
+                Text="Product Details"/>
+
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1">
+            <Image Source="{Binding Product.image}" HeightRequest="500" WidthRequest="300"/>
+            <Label FontSize="Body" Padding="20" Text="{Binding Product.description}"/>
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="20">
+                <Label FontSize="Large" Text="$"/>
+                <Label FontSize="Large" Text="{Binding Product.price}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</baseviews:ViewBase>

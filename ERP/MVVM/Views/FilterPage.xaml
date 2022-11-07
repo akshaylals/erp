@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<baseviews:ViewBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseviews="clr-namespace:ERP.MVVM.Views.Base"
+             xmlns:viewmodels="clr-namespace:ERP.MVVM.ViewModels"
+             xmlns:models="clr-namespace:ERP.MVVM.Models"
+             x:TypeArguments="viewmodels:FilterPageViewModel"
+             x:DataType="viewmodels:FilterPageViewModel"
+             x:Class="ERP.MVVM.Views.FilterPage"
+             Title="FilterPage">
+
+    <Grid RowDefinitions=".07*,.93*">
+        <Grid BackgroundColor="White"
+            ColumnDefinitions=".7*,.3*"
+            Margin="0,4"
+            IgnoreSafeArea="True">
+
+            <ImageButton
+                Source="icnback.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Style="{StaticResource IconButtonStyle}"
+                Grid.Column="0"
+                Clicked="BackClicked"/>
+
+            <!-- Icons for Right Side -->
+            <Grid
+                x:Name="PageIconsGrid"
+                Grid.Column="1"
+                ColumnDefinitions=".5*,.5*"
+                Margin="0,4"
+                VerticalOptions="Center"
+                HorizontalOptions="End">
+
+                <Button Grid.Column="0"
+                        Text="DONE"
+                        Clicked="DoneClicked"
+                        Style="{StaticResource NavigationBarButtonStyle}"/>
+                
+                <Button Grid.Column="1"
+                        Text="RESET"
+                        Clicked="ResetClicked"
+                        Style="{StaticResource NavigationBarButtonStyle}"/>
+
+            </Grid>
+
+        </Grid>
+
+        <CollectionView ItemsSource="{Binding Categories}"
+                        Grid.Row="1"
+                        SelectionMode="None"
+                        EmptyView="Loading">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="viewmodels:FilterOption">
+                    <RadioButton GroupName="radioFilter"
+                                 Content="{Binding CategoryName}"
+                                 IsChecked="{Binding IsSelected}"
+                                 CheckedChanged="RadioChanged" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</baseviews:ViewBase>

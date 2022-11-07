@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<baseviews:ViewBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseviews="clr-namespace:ERP.MVVM.Views.Base"
+             xmlns:viewmodels="clr-namespace:ERP.MVVM.ViewModels"
+             xmlns:models="clr-namespace:ERP.MVVM.Models"
+             x:TypeArguments="viewmodels:CartPageViewModel"
+             x:Class="ERP.MVVM.Views.CartPage"
+             Title="CartPage">
+
+    <Grid RowDefinitions=".07*,.93*">
+        
+        <Grid BackgroundColor="White"
+            ColumnDefinitions=".1*,.9*"
+            Margin="0,4"
+            IgnoreSafeArea="True">
+
+            <ImageButton
+                Source="icnback.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Style="{StaticResource IconButtonStyle}"
+                Grid.Column="0"
+                Clicked="BackClicked"/>
+            
+            <Label
+                Grid.Column="1"
+                x:Name="TitleLabel"
+                Style="{StaticResource PageHeaderTextStyle}"
+                Text="Cart"/>
+
+        </Grid>
+
+        <CollectionView ItemsSource="{Binding CartItems}"
+                        SelectionMode="None"
+                        Margin="0,0,0,0"
+                        Grid.Row="1"
+                        EmptyView="Empty cart">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:CartItem">
+                    <Grid Padding="10">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Details"
+                                           BackgroundColor="Green"
+                                         />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame ClassId="{Binding product.id}">
+                                <Frame.GestureRecognizers>
+                                    <SwipeGestureRecognizer Direction="Left" 
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=DeleteFromCartCommand}"
+                                                            CommandParameter="{Binding id}" 
+                                                            Threshold="250000"/>
+                                    <SwipeGestureRecognizer Direction="Right"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                                            CommandParameter="{Binding product.id}" 
+                                                            Threshold="250000"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFill" Source="{Binding product.image}"
+                                       WidthRequest="125"
+                                       HeightRequest="125"/>
+                                    <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                        <Label Text="{Binding product.title}" />
+                                        <HorizontalStackLayout>
+                                            <Label Text="$"/>
+                                            <Label Text="{Binding product.price}" />
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</baseviews:ViewBase>
