@@ -12,7 +12,7 @@ public static class Constants
     //public static string clientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l";
 
     //OidcClient Options - Okta
-    public static string authority = "dev-1ipheitoccjnh67e.us.auth0.com";
+    public static string authority = "https://dev-1ipheitoccjnh67e.us.auth0.com";
     public static string clientId = "yNZ1SyOXtgWJ6QwyxRADZjl82dKkpCcn";
     public static string redirectUri = "erp://callback";
     public static string scope = "openid email profile";
