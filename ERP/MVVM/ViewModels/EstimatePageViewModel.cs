@@ -27,7 +27,7 @@ public class EstimatePageViewModel : ViewModelBase
         {
             await ApiService.PostCartItem((int)id);
             await GetCartCount();
-            ShowAnimation(-200, 600, 58, 40);
+            ShowAnimation(-200, 600, 35, -30);
         });
 
     public ICommand SearchProductsCommand =>
@@ -66,7 +66,7 @@ public class EstimatePageViewModel : ViewModelBase
 
     public async void ShowAnimation(double x1, double y1, double x2, double y2)
     {
-        dummyImage.Scale = 1;
+        dummyImage.Scale = 0.5;
         dummyImage.Rotation = 0;
         dummyImage.TranslationX = x1;
         dummyImage.TranslationY = y1;
