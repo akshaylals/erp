@@ -3,6 +3,8 @@
 public static class Constants
 {
     public static string apiEndpoint = "http://localhost:3000";
+
+    //OidcClient Options
     public static string authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/";
     public static string clientId = "6inagfr1f90pv903vvtd7out3k";
     public static string redirectUri = "erp://";
