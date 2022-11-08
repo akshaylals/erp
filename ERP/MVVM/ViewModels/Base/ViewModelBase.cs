@@ -18,10 +18,7 @@ public class ViewModelBase
     public ICommand LogOutCommand =>
         new Command(() =>
         {
-            Preferences.Remove("token");
-            Preferences.Remove("email");
-            Preferences.Remove("username");
-            App.Current.MainPage = new LoginPage();
+            ((App)Application.Current).Logout();
         });
     #endregion
 }
