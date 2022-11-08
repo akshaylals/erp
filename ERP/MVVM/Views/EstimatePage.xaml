@@ -178,7 +178,6 @@
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=AddToCartCommand}"
                                                             CommandParameter="{Binding id}" 
                                                             Threshold="250000"/>
-                                                            <!--Swiped="FlyToCartAnimation" />-->
                                     <SwipeGestureRecognizer Direction="Right"
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                             CommandParameter="{Binding id}" 
