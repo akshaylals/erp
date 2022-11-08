@@ -22,6 +22,7 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
         }
 
         ViewModel.dummyImage = dummyImage;
+        ViewModel.cartBtn = CartBtn;
     }
 
     private void ClearSearchButton_Clicked(object sender, EventArgs e)

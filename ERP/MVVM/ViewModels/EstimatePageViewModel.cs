@@ -13,6 +13,7 @@ public class EstimatePageViewModel : ViewModelBase
     private string searchTerm = "";
     public FilterStringWrapper filterObj = new();
     public Image dummyImage;
+    public ImageButton cartBtn;
     #endregion
 
     #region Commands
@@ -27,7 +28,7 @@ public class EstimatePageViewModel : ViewModelBase
         {
             await ApiService.PostCartItem((int)id);
             await GetCartCount();
-            ShowAnimation(-200, 600, 35, -30);
+            ShowAnimation(-200, 600, 35, -40);
         });
 
     public ICommand SearchProductsCommand =>
@@ -66,7 +67,7 @@ public class EstimatePageViewModel : ViewModelBase
 
     public async void ShowAnimation(double x1, double y1, double x2, double y2)
     {
-        dummyImage.Scale = 0.5;
+        dummyImage.Scale = 0.4;
         dummyImage.Rotation = 0;
         dummyImage.TranslationX = x1;
         dummyImage.TranslationY = y1;
@@ -74,9 +75,19 @@ public class EstimatePageViewModel : ViewModelBase
 
         await Task.WhenAll(
             dummyImage.TranslateTo(x2, y2, 800, Easing.CubicInOut),
-            dummyImage.RotateTo(1000, 800)
+            dummyImage.RotateTo(1000, 800),
+            dummyImage.ScaleTo(0.1, 800)
         );
         await dummyImage.ScaleTo(0, 200);
+
+        var cx = cartBtn.X;
+        var cy = cartBtn.Y;
+        var shakeOffset = 10;
+        await cartBtn.TranslateTo(cx - shakeOffset, cy, 50, Easing.CubicInOut);
+        await cartBtn.TranslateTo(cx + shakeOffset, cy, 50, Easing.CubicInOut);
+        await cartBtn.TranslateTo(cx - shakeOffset, cy, 50, Easing.CubicInOut);
+        await cartBtn.TranslateTo(cx + shakeOffset, cy, 50, Easing.CubicInOut);
+        await cartBtn.TranslateTo(cx, cy, 50, Easing.CubicInOut);
 
         dummyImage.IsVisible = false;
     }
