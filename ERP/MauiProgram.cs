@@ -19,12 +19,11 @@ public static class MauiProgram
         builder.Services.AddTransient<OidcClient>(sp =>
             new OidcClient(new OidcClientOptions
             {
-                // use your own ngrok url:
-                Authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/",
-                ClientId = "6inagfr1f90pv903vvtd7out3k",
-                RedirectUri = "erp://",
-                Scope = "openid email profile",
-                ClientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l",
+                Authority = Constants.authority,
+                ClientId = Constants.clientId,
+                RedirectUri = Constants.redirectUri,
+                Scope = Constants.scope,
+                ClientSecret = Constants.clientSecret,
                 Policy = new Policy { Discovery = new IdentityModel.Client.DiscoveryPolicy { ValidateEndpoints = false } },
                 Browser = sp.GetRequiredService<WebAuthenticatorBrowser>(),
 
