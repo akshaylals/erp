@@ -12,9 +12,9 @@ public class LoginPageViewModel : ViewModelBase
 
     #region Commands
     public ICommand LoginCommand =>
-        new Command(() =>
+        new Command(async () =>
         {
-            ((App)Application.Current).Authenticate();
+            await ((App)Application.Current).Authenticate();
         });
     #endregion
 

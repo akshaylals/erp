@@ -14,7 +14,7 @@ public partial class App : Application
 		MainPage = new LoginPage();
 	}
 
-	public async void Authenticate()
+	public async Task Authenticate()
 	{
         if (Preferences.ContainsKey("token"))
         {
