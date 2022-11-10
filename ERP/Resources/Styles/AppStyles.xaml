@@ -20,7 +20,7 @@
     <!-- Tabbed Page -->
     <Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
         <Setter Property="BarBackgroundColor" Value="White"/>
-        <Setter Property="SelectedTabColor" Value="#B91212" />
+        <!--<Setter Property="SelectedTabColor" Value="#B91212" />-->
     </Style>
 
     <!-- Grid Styles -->
