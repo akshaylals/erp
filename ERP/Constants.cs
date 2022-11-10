@@ -2,7 +2,11 @@
 
 public static class Constants
 {
+#if ANDROID
+    public static string apiEndpoint = "http://192.168.144.1:3000";
+#elif IOS
     public static string apiEndpoint = "http://localhost:3000";
+#endif
 
     ////OidcClient Options - AWS
     //public static string authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/";

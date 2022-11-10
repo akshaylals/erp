@@ -43,28 +43,20 @@
                             <SwipeView.RightItems>
                                 <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
                                     <SwipeItem Text="Delete"
-                                           BackgroundColor="Red"
-                                         />
+                                               BackgroundColor="Red"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=DeleteFromCartCommand}"
+                                               CommandParameter="{Binding id}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <SwipeView.LeftItems>
                                 <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
                                     <SwipeItem Text="Details"
-                                           BackgroundColor="Green"
-                                         />
+                                               BackgroundColor="Green"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                               CommandParameter="{Binding product.id}" />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Frame ClassId="{Binding product.id}">
-                                <Frame.GestureRecognizers>
-                                    <SwipeGestureRecognizer Direction="Left" 
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=DeleteFromCartCommand}"
-                                                            CommandParameter="{Binding id}" 
-                                                            Threshold="250000"/>
-                                    <SwipeGestureRecognizer Direction="Right"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=NavigateToDetailsPageCommand}"
-                                                            CommandParameter="{Binding product.id}" 
-                                                            Threshold="250000"/>
-                                </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <Image Aspect="AspectFill" Source="{Binding product.image}"
                                        WidthRequest="125"

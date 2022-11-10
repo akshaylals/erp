@@ -139,27 +139,15 @@
             <DataTemplate x:DataType="models:Product">
                 <Grid Padding="10">
                     <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                <SwipeItem Text="Add to Cart"
-                                           BackgroundColor="Red"
-                                         />
-                            </SwipeItems>
-                        </SwipeView.RightItems>
                         <SwipeView.LeftItems>
                             <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
                                 <SwipeItem Text="Details"
                                            BackgroundColor="Green"
-                                         />
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                           CommandParameter="{Binding id}" />
                             </SwipeItems>
                         </SwipeView.LeftItems>
                         <Frame ClassId="{Binding id}">
-                            <Frame.GestureRecognizers>
-                                <SwipeGestureRecognizer Direction="Right"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchPageViewModel}}, Path=NavigateToDetailsPageCommand}"
-                                                            CommandParameter="{Binding id}" 
-                                                            Threshold="250000"/>
-                            </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding image}"
                                        WidthRequest="125"
