@@ -62,7 +62,7 @@
         </Grid>
     </NavigationPage.TitleView>
 
-    <Grid RowDefinitions="Auto,Auto">
+    <Grid RowDefinitions=".06*,.94*">
         <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
 
             <Grid Grid.Row ="0">
@@ -132,41 +132,41 @@
         </Grid>
 
         <CollectionView ItemsSource="{Binding Products}"
-                         SelectionMode="None"
+                        SelectionMode="None"
                         Grid.Row="1">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:Product">
-                <Grid Padding="10">
-                    <SwipeView>
-                        <SwipeView.LeftItems>
-                            <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                <SwipeItem Text="Details"
-                                           BackgroundColor="Green"
-                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchPageViewModel}}, Path=NavigateToDetailsPageCommand}"
-                                           CommandParameter="{Binding id}" />
-                            </SwipeItems>
-                        </SwipeView.LeftItems>
-                        <Frame ClassId="{Binding id}">
-                            <Grid Padding="0" ColumnDefinitions="125,*">
-                                <Image Aspect="AspectFill" Source="{Binding image}"
-                                       WidthRequest="125"
-                                       HeightRequest="125" />
-                                <VerticalStackLayout
-                                    Grid.Column="1"
-                                    Padding="10">
-                                    <Label Text="{Binding title}" />
-                                    <HorizontalStackLayout>
-                                        <Label Text="$"/>
-                                        <Label  Text="{Binding price}" />
-                                    </HorizontalStackLayout>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </SwipeView>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <Grid Padding="10">
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Details"
+                                               BackgroundColor="Green"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchPageViewModel}}, Path=NavigateToDetailsPageCommand}"
+                                               CommandParameter="{Binding id}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame ClassId="{Binding id}">
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFill" Source="{Binding image}"
+                                           WidthRequest="125"
+                                           HeightRequest="125" />
+                                    <VerticalStackLayout
+                                        Grid.Column="1"
+                                        Padding="10">
+                                        <Label Text="{Binding title}" />
+                                        <HorizontalStackLayout>
+                                            <Label Text="$"/>
+                                            <Label Text="{Binding price}" />
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
 </baseviews:ViewBase>
