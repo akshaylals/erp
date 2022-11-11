@@ -21,4 +21,10 @@
 	  <PackageReference Include="IdentityModel.OidcClient" Version="5.1.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Controls\LoadingIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

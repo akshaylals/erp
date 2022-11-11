@@ -6,8 +6,9 @@
              x:TypeArguments="viewmodels:LoginPageViewModel"
              x:Class="ERP.MVVM.Views.LoginPage">
 
-    <Grid RowDefinitions=".8*,.2*">
-        <Image
+    <baseviews:ViewBase.PageContent>
+        <Grid RowDefinitions=".8*,.2*">
+            <Image
             Grid.Row="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
@@ -15,7 +16,7 @@
             Source="gordian_logo.png" />
 
 
-        <Button 
+            <Button 
             Grid.Row="1"
             Text="LOGIN"             
             Margin="0,0,0,80"
@@ -28,5 +29,8 @@
             TextColor="White"
             Command="{Binding LoginCommand}"/>
 
-    </Grid>
+        </Grid>
+    </baseviews:ViewBase.PageContent>
+
+    
 </baseviews:ViewBase>

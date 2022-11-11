@@ -12,6 +12,7 @@ global using IdentityModel.OidcClient;
 global using Framework.Exceptions;
 global using Framework.Services;
 global using Framework.Authentication;
+global using Framework.Controls;
 #endregion
 
 #region ERP

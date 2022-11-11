@@ -1,5 +1,6 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
+
 public class LoginPageViewModel : ViewModelBase
 {
     #region Binding Property
@@ -14,7 +15,9 @@ public class LoginPageViewModel : ViewModelBase
     public ICommand LoginCommand =>
         new Command(async () =>
         {
+            SetLoading(true, "Logging in");
             await ((App)Application.Current).Authenticate();
+            SetLoading(false);
         });
     #endregion
 

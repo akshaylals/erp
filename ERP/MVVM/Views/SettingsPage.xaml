@@ -55,4 +55,6 @@
         </Grid>
     </NavigationPage.TitleView>
 
+    <baseviews:ViewBase.PageContent></baseviews:ViewBase.PageContent>
+
 </baseviews:ViewBase>

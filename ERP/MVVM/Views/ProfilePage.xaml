@@ -55,20 +55,21 @@
         </Grid>
     </NavigationPage.TitleView>
 
+    <baseviews:ViewBase.PageContent>
+        <Grid RowDefinitions=".7*,.3*">
+            <Image Grid.Row="0" Source="img_avatar.png" />
+            <Frame HeightRequest="500" Margin="5,800,5,5"/>
+            <VerticalStackLayout  Grid.Row="1">
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" FontAttributes="Bold" Text="Username: " />
+                    <Label FontSize="Medium" Text="{Binding Username}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" FontAttributes="Bold" Text="Email: " />
+                    <Label FontSize="Medium" Text="{Binding Email}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </baseviews:ViewBase.PageContent>
 
-    <Grid RowDefinitions=".7*,.3*">
-        <Image Grid.Row="0" Source="img_avatar.png" />
-        <Frame HeightRequest="500" Margin="5,800,5,5"/>
-        <VerticalStackLayout  Grid.Row="1">
-            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Label FontSize="Medium" FontAttributes="Bold" Text="Username: " />
-                <Label FontSize="Medium" Text="{Binding Username}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Label FontSize="Medium" FontAttributes="Bold" Text="Email: " />
-                <Label FontSize="Medium" Text="{Binding Email}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-    </Grid>
-    
 </baseviews:ViewBase>

@@ -78,11 +78,12 @@
         </Grid>
     </NavigationPage.TitleView>
 
-    <Grid RowDefinitions=".06*,.94*">
-        <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
+    <baseviews:ViewBase.PageContent>
+        <Grid RowDefinitions=".06*,.94*">
+            <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
 
-            <Grid Grid.Row ="0">
-                <Border Grid.Row="0"
+                <Grid Grid.Row ="0">
+                    <Border Grid.Row="0"
                         Padding="12,4"
                         BackgroundColor="White"
                         Stroke="Transparent"
@@ -91,29 +92,29 @@
                         HeightRequest="40"
                         StrokeShape="RoundRectangle 8">
 
-                    <Grid
+                        <Grid
                         HorizontalOptions="Fill"
                         VerticalOptions="Center"
                         ColumnDefinitions="Auto,*,Auto"
                         ColumnSpacing="16">
 
-                        <Image
+                            <Image
                             WidthRequest="18"
                             HeightRequest="18"
                             Source="ic_mic.png"
                             Grid.Column="0"
                             VerticalOptions="Center">
 
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
                                         Command="{Binding SearchProductsCommand}"
                                         CommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}" />
 
-                            </Image.GestureRecognizers>
+                                </Image.GestureRecognizers>
 
-                        </Image>
+                            </Image>
 
-                        <Entry
+                            <Entry
                             x:Name="txtSearchQuery"
                             Grid.Column="1"
                             VerticalOptions="Center"
@@ -125,7 +126,7 @@
                             ReturnCommand="{Binding SearchProductsCommand}"
                             ReturnCommandParameter="{Binding Path=Text, Source={x:Reference txtSearchQuery}, Mode=OneWay}"/>
 
-                        <ImageButton
+                            <ImageButton
                                 WidthRequest="18"
                                 HeightRequest="18"
                                 Source="ic_close.png"
@@ -133,71 +134,74 @@
                                 VerticalOptions="Center"
                                 Clicked="ClearSearchButton_Clicked" />
 
-                    </Grid>
+                        </Grid>
 
-                </Border>
-            </Grid>
+                    </Border>
+                </Grid>
 
-            <Grid 
+                <Grid 
                 x:Name="filterGrid"
                 Padding ="10, 0, 10, 10"
                 Grid.Row="1">
 
+                </Grid>
+
             </Grid>
 
-        </Grid>
-
-        <CollectionView  Grid.Row="1"
+            <CollectionView  Grid.Row="1"
                          ItemsSource="{Binding Products}"
                          SelectionMode="None"
                          Grid.ColumnSpan="2">
 
-            <CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate>
 
-                <DataTemplate x:DataType="models:Product">
+                    <DataTemplate x:DataType="models:Product">
 
-                    <Grid Padding="10">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Add to Cart"
+                        <Grid Padding="10">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Add to Cart"
                                                BackgroundColor="Red"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=AddToCartCommand}"
                                                CommandParameter="{Binding id}" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <SwipeView.LeftItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Details"
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Details"
                                                BackgroundColor="Green"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EstimatePageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                CommandParameter="{Binding id}" />
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <Frame ClassId="{Binding id}">
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Aspect="AspectFill" Source="{Binding image}"
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <Frame ClassId="{Binding id}">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image Aspect="AspectFill" Source="{Binding image}"
                                        WidthRequest="125"
                                        HeightRequest="125" />
-                                    <VerticalStackLayout
+                                        <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                        <Label Text="{Binding title}" />
-                                        <HorizontalStackLayout>
-                                            <Label Text="$"/>
-                                            <Label Text="{Binding price}" />
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </SwipeView>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                            <Label Text="{Binding title}" />
+                                            <HorizontalStackLayout>
+                                                <Label Text="$"/>
+                                                <Label Text="{Binding price}" />
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <Image x:Name="dummyImage"
+            <Image x:Name="dummyImage"
                Source="icncart.png" 
                IsVisible="False"/>
-    </Grid>
+        </Grid>
+    </baseviews:ViewBase.PageContent>
+
+    
 </baseviews:ViewBase>

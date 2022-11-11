@@ -7,14 +7,15 @@
              x:Class="ERP.MVVM.Views.DetailsPage"
              Title="Details Page">
 
-    <Grid RowDefinitions=".07*,.93*">
+    <baseviews:ViewBase.PageContent>
+        <Grid RowDefinitions=".07*,.93*">
 
-        <Grid BackgroundColor="White"
+            <Grid BackgroundColor="White"
             ColumnDefinitions=".1*,.9*"
             Margin="0,4"
             IgnoreSafeArea="True">
 
-            <ImageButton
+                <ImageButton
                 Source="icnback.png"
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
@@ -22,21 +23,24 @@
                 Grid.Column="0"
                 Clicked="BackClicked"/>
 
-            <Label
+                <Label
                 Grid.Column="1"
                 x:Name="TitleLabel"
                 Style="{StaticResource PageHeaderTextStyle}"
                 Text="Product Details"/>
 
-        </Grid>
+            </Grid>
 
-        <VerticalStackLayout Grid.Row="1">
-            <Image Source="{Binding Product.image}" HeightRequest="500" WidthRequest="300"/>
-            <Label FontSize="Body" Padding="20" Text="{Binding Product.description}"/>
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="20">
-                <Label FontSize="Large" Text="$"/>
-                <Label FontSize="Large" Text="{Binding Product.price}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-    </Grid>
+            <VerticalStackLayout Grid.Row="1">
+                <Image Source="{Binding Product.image}" HeightRequest="500" WidthRequest="300"/>
+                <Label FontSize="Body" Padding="20" Text="{Binding Product.description}"/>
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="20">
+                    <Label FontSize="Large" Text="$"/>
+                    <Label FontSize="Large" Text="{Binding Product.price}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </baseviews:ViewBase.PageContent>
+
+    
 </baseviews:ViewBase>

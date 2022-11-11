@@ -8,74 +8,78 @@
              x:Class="ERP.MVVM.Views.CartPage"
              Title="CartPage">
 
-    <Grid RowDefinitions=".07*,.93*">
-        
-        <Grid BackgroundColor="White"
+    <baseviews:ViewBase.PageContent>
+        <Grid RowDefinitions=".07*,.93*">
+
+            <Grid BackgroundColor="White"
             ColumnDefinitions=".1*,.9*"
             Margin="0,4"
             IgnoreSafeArea="True">
 
-            <ImageButton
+                <ImageButton
                 Source="icnback.png"
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
                 Style="{StaticResource IconButtonStyle}"
                 Grid.Column="0"
                 Clicked="BackClicked"/>
-            
-            <Label
+
+                <Label
                 Grid.Column="1"
                 x:Name="TitleLabel"
                 Style="{StaticResource PageHeaderTextStyle}"
                 Text="Cart"/>
 
-        </Grid>
+            </Grid>
 
-        <CollectionView ItemsSource="{Binding CartItems}"
+            <CollectionView ItemsSource="{Binding CartItems}"
                         SelectionMode="None"
                         Margin="0,0,0,0"
                         Grid.Row="1"
                         EmptyView="Empty cart">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:CartItem">
-                    <Grid Padding="10">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Delete"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CartItem">
+                        <Grid Padding="10">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Delete"
                                                BackgroundColor="Red"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=DeleteFromCartCommand}"
                                                CommandParameter="{Binding id}" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <SwipeView.LeftItems>
-                                <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
-                                    <SwipeItem Text="Details"
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="Close">
+                                        <SwipeItem Text="Details"
                                                BackgroundColor="Green"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CartPageViewModel}}, Path=NavigateToDetailsPageCommand}"
                                                CommandParameter="{Binding product.id}" />
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <Frame ClassId="{Binding product.id}">
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Aspect="AspectFill" Source="{Binding product.image}"
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <Frame ClassId="{Binding product.id}">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image Aspect="AspectFill" Source="{Binding product.image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>
-                                    <VerticalStackLayout
+                                        <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                        <Label Text="{Binding product.title}" />
-                                        <HorizontalStackLayout>
-                                            <Label Text="$"/>
-                                            <Label Text="{Binding product.price}" />
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </SwipeView>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+                                            <Label Text="{Binding product.title}" />
+                                            <HorizontalStackLayout>
+                                                <Label Text="$"/>
+                                                <Label Text="{Binding product.price}" />
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </baseviews:ViewBase.PageContent>
+
+    
 </baseviews:ViewBase>

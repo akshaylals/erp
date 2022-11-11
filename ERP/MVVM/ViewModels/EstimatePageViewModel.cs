@@ -1,6 +1,5 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
-[AddINotifyPropertyChangedInterface]
 public class EstimatePageViewModel : ViewModelBase
 {
     #region Binding Property
@@ -92,11 +91,9 @@ public class EstimatePageViewModel : ViewModelBase
         dummyImage.IsVisible = false;
     }
 
-    private async Task GetSearchProducts()
+    public async Task GetSearchProducts()
     {
-        //SetDataLodingIndicators(true);
-
-        //LoadingText = "Hold on while we get products...";
+        SetLoading(true, "Hold on while we get products...");
 
         try
         {
@@ -137,7 +134,7 @@ public class EstimatePageViewModel : ViewModelBase
         }
         finally
         {
-            //SetDataLodingIndicators(false);
+            SetLoading(false);
         }
 
     }

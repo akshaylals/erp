@@ -7,22 +7,23 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
 	public EstimatePage()
 	{
 		InitializeComponent();
+
+        ViewModel.dummyImage = dummyImage;
+        ViewModel.cartBtn = CartBtn;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        ViewModel.SearchProductsCommand.Execute("");
+        //ViewModel.SearchProductsCommand.Execute("");
         ViewModel.GetCartCount();
         filterGrid.Children.Clear();
 
         if (ViewModel.filterObj.FilterString != "")
         {
             CreateFilterCard();
+            ViewModel.GetSearchProducts();
         }
-
-        ViewModel.dummyImage = dummyImage;
-        ViewModel.cartBtn = CartBtn;
     }
 
     private void ClearSearchButton_Clicked(object sender, EventArgs e)

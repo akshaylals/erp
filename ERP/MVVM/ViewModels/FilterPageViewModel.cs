@@ -1,6 +1,5 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
-[AddINotifyPropertyChangedInterface]
 public class FilterPageViewModel : ViewModelBase
 {
     #region Bindable Properties
@@ -22,6 +21,7 @@ public class FilterPageViewModel : ViewModelBase
     #region functions
     private async void GetCategories()
     {
+        SetLoading(true, "Loading ...");
         var categories = await ApiService.GetCategories();
         foreach (var category in categories)
         {
@@ -31,6 +31,7 @@ public class FilterPageViewModel : ViewModelBase
                 IsSelected = (category == FilterObj.FilterString)
             });
         }
+        SetLoading(false);
     }
     #endregion
 }

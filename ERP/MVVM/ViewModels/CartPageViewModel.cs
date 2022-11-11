@@ -1,7 +1,6 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
 
-[AddINotifyPropertyChangedInterface]
 public class CartPageViewModel : ViewModelBase
 {
     public CartPageViewModel()
@@ -32,9 +31,7 @@ public class CartPageViewModel : ViewModelBase
     #region functions
     private async Task GetCartItems()
     {
-        //SetDataLodingIndicators(true);
-
-        //LoadingText = "Hold on while we get your cart...";
+        SetLoading(true, "Hold on while we get your cart...");
 
         try
         {
@@ -74,9 +71,7 @@ public class CartPageViewModel : ViewModelBase
         }
         finally
         {
-            //SetDataLodingIndicators(false);
-            Console.WriteLine("Loaded");
-
+            SetLoading(false);
         }
     }
     #endregion

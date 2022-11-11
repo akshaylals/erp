@@ -1,6 +1,5 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
-[AddINotifyPropertyChangedInterface]
 public class DetailsPageViewModel : ViewModelBase
 {
     #region Binding Property
@@ -13,9 +12,7 @@ public class DetailsPageViewModel : ViewModelBase
     #region functions
     public async void GetProduct(int productID)
     {
-        //SetDataLodingIndicators(true);
-
-        //this.LoadingText = "Hold on while we load the product details...";
+        SetLoading(true, "Hold on while we load the product details...");
 
         try
         {
@@ -39,8 +36,7 @@ public class DetailsPageViewModel : ViewModelBase
         }
         finally
         {
-            //SetDataLodingIndicators(false);
-            Console.WriteLine("Loaded");
+            SetLoading(false);
         }
     }
     #endregion

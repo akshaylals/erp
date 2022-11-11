@@ -1,6 +1,5 @@
 ﻿namespace ERP.MVVM.ViewModels;
 
-[AddINotifyPropertyChangedInterface]
 public class SearchPageViewModel : ViewModelBase
 {
     public SearchPageViewModel()
@@ -43,9 +42,7 @@ public class SearchPageViewModel : ViewModelBase
     #region functions
     private async Task GetSearchProducts()
     {
-        //SetDataLodingIndicators(true);
-
-        //LoadingText = "Hold on while we get products...";
+        SetLoading(true, "Hold on while we get products...");
 
         try
         {
@@ -85,15 +82,17 @@ public class SearchPageViewModel : ViewModelBase
         }
         finally
         {
-            //SetDataLodingIndicators(false);
+            SetLoading(false);
         }
 
     }
 
     public async void GetAllProducts()
     {
+        SetLoading(true, "Hold on while we get products...");
         var products = await ApiService.GetProducts();
         Products = new ObservableCollection<Product>(products);
+        SetLoading(false);
     }
     #endregion
 }
