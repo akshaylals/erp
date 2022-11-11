@@ -79,7 +79,7 @@
     </NavigationPage.TitleView>
 
     <baseviews:ViewBase.PageContent>
-        <Grid RowDefinitions=".06*,.94*">
+        <Grid RowDefinitions="Auto,*">
             <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
 
                 <Grid Grid.Row ="0">

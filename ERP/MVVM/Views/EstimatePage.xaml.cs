@@ -72,13 +72,19 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
             Source = "ic_close.png",
             VerticalOptions = LayoutOptions.Center
         };
-        Entry entry = new Entry();
-        imageButton.Clicked += (s, e) =>
+        imageButton.Command = new Command(() =>
         {
             ViewModel.filterObj.FilterString = "";
             System.Diagnostics.Debug.WriteLine("filter Cleared!");
             filterGrid.Children.Clear();
-        };
+        });
+        //imageButton.Clicked += (s, e) =>
+        //{
+        //    ViewModel.filterObj.FilterString = "";
+        //    System.Diagnostics.Debug.WriteLine("filter Cleared!");
+        //    filterGrid.Children.Clear();
+        //};
+        Entry entry = new Entry();
         grid.Add(imageButton, 1);
         border.Content = grid;
         filterGrid.Add(border);
