@@ -3,7 +3,7 @@
 public static class Constants
 {
 #if ANDROID
-    public static string apiEndpoint = "http://172.25.144.1:3000";
+    public static string apiEndpoint = "http://192.168.224.1:3000";
 #elif IOS
     public static string apiEndpoint = "http://localhost:3000";
 #endif
