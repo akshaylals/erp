@@ -19,12 +19,14 @@ public class EstimatePageViewModel : ViewModelBase
     public ICommand NavigateToDetailsPageCommand =>
         new Command((id) =>
         {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
             NavigationService.PushModalAsync(new DetailsPage((int)id));
         });
 
     public ICommand AddToCartCommand =>
         new Command(async (id) =>
         {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
             await ApiService.PostCartItem((int)id);
             await GetCartCount();
             ShowAnimation(-200, 600, 35, -40);
@@ -87,8 +89,6 @@ public class EstimatePageViewModel : ViewModelBase
         //await cartBtn.TranslateTo(cx - shakeOffset, cy, 25, Easing.CubicInOut);
         //await cartBtn.TranslateTo(cx + shakeOffset, cy, 25, Easing.CubicInOut);
         //await cartBtn.TranslateTo(cx, cy, 25, Easing.CubicInOut);
-
-        Vibration.Default.Vibrate(250);
 
         dummyImage.IsVisible = false;
     }

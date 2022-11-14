@@ -16,12 +16,14 @@ public class CartPageViewModel : ViewModelBase
     public ICommand NavigateToDetailsPageCommand =>
         new Command((id) =>
         {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
             NavigationService.PushModalAsync(new DetailsPage((int)id));
         });
 
     public ICommand DeleteFromCartCommand =>
         new Command(async (id) =>
         {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
             await ApiService.DeleteCartItem((int)id);
 
             await GetCartItems();

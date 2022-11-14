@@ -22,6 +22,7 @@ public class SearchPageViewModel : ViewModelBase
     public ICommand NavigateToDetailsPageCommand =>
         new Command((id) =>
         {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
             NavigationService.PushModalAsync(new DetailsPage((int)id));
         });
 
