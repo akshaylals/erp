@@ -4,9 +4,14 @@
              xmlns:baseviews="clr-namespace:ERP.MVVM.Views.Base"
              xmlns:viewmodels="clr-namespace:ERP.MVVM.ViewModels"
              xmlns:models="clr-namespace:ERP.MVVM.Models"
+             xmlns:converters="clr-namespace:Framework.Converters;assembly=Framework"
              x:TypeArguments="viewmodels:EstimatePageViewModel"
              x:Class="ERP.MVVM.Views.EstimatePage"
              Title="EstimatePage">
+
+    <baseviews:ViewBase.Resources>
+        <converters:InverseBooleanConverter x:Key="cvtInverseBool"/>
+    </baseviews:ViewBase.Resources>
 
     <NavigationPage.TitleView>
         <Grid BackgroundColor="White"
@@ -148,10 +153,11 @@
 
             </Grid>
 
-            <CollectionView  Grid.Row="1"
-                         ItemsSource="{Binding Products}"
-                         SelectionMode="None"
-                         Grid.ColumnSpan="2">
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding Products}"
+                            SelectionMode="None"
+                            Grid.ColumnSpan="2"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource cvtInverseBool}}">
 
                 <CollectionView.ItemTemplate>
 

@@ -29,7 +29,14 @@ public class SearchPageViewModel : ViewModelBase
         new Command(async (searchQuery) =>
         {
             searchTerm = ((string)searchQuery).Trim();
-            await GetSearchProducts();
+            if (searchTerm == "")
+            {
+                GetAllProducts();
+            }
+            else
+            {
+                await GetSearchProducts();
+            }
         });
 
     public ICommand NavigateToFilterPageCommand =>
@@ -43,7 +50,8 @@ public class SearchPageViewModel : ViewModelBase
     private async Task GetSearchProducts()
     {
         SetError(false);
-        SetLoading(true, "Hold on while we get products...");
+        SetLoading(true, "Searching...");
+        Products.Clear();
 
         try
         {

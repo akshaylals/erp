@@ -9,7 +9,10 @@ public partial class SearchPage : ViewBase<SearchPageViewModel>
 
     private void ClearSearchButton_Clicked(object sender, EventArgs e)
     {
-        txtSearchQuery.Text = String.Empty;
-        ViewModel.SearchProductsCommand.Execute(txtSearchQuery.Text);
+        if(txtSearchQuery.Text != String.Empty)
+        {
+            txtSearchQuery.Text = String.Empty;
+            ViewModel.SearchProductsCommand.Execute(txtSearchQuery.Text);
+        }
     }
 }

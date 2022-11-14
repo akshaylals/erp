@@ -93,7 +93,8 @@ public class EstimatePageViewModel : ViewModelBase
 
     public async Task GetSearchProducts()
     {
-        SetLoading(true, "Hold on while we get products...");
+        SetLoading(true, "Searching...");
+        Products?.Clear();
         SetError(false);
 
         try

@@ -4,9 +4,14 @@
              xmlns:baseviews="clr-namespace:ERP.MVVM.Views.Base"
              xmlns:viewmodels="clr-namespace:ERP.MVVM.ViewModels"
              xmlns:models="clr-namespace:ERP.MVVM.Models"
+             xmlns:converters="clr-namespace:Framework.Converters;assembly=Framework"
              x:TypeArguments="viewmodels:SearchPageViewModel"
              x:Class="ERP.MVVM.Views.SearchPage"
              Title="Search Page">
+
+    <baseviews:ViewBase.Resources>
+        <converters:InverseBooleanConverter x:Key="cvtInverseBool"/>
+    </baseviews:ViewBase.Resources>
 
     <NavigationPage.TitleView>
         <Grid BackgroundColor="White"
@@ -133,8 +138,9 @@
             </Grid>
 
             <CollectionView ItemsSource="{Binding Products}"
-                        SelectionMode="None"
-                        Grid.Row="1">
+                            SelectionMode="None"
+                            Grid.Row="1"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource cvtInverseBool}}">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Product">
