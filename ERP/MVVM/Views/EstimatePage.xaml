@@ -32,9 +32,8 @@
                 <Grid>
                     <Label IsVisible="{Binding CartBadgeVisible}"
                            Text="{Binding CartCount}" 
-                           BackgroundColor="#B91212"
-                           Padding="2"
-                           TextColor="White"
+                           FontSize="Caption"
+                           TextColor="#B91212"
                            HorizontalOptions="End"
                            VerticalOptions="Start" />
                     
