@@ -94,6 +94,7 @@ public class EstimatePageViewModel : ViewModelBase
     public async Task GetSearchProducts()
     {
         SetLoading(true, "Hold on while we get products...");
+        SetError(false);
 
         try
         {
@@ -113,24 +114,27 @@ public class EstimatePageViewModel : ViewModelBase
         }
         catch (InternetConnectionException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
+            SetError(true,
+                $"Slow or no internet connection. {Environment.NewLine}Please check you internet connection and try again.",
+                "nointernet.png");
+
             Console.WriteLine("Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.");
-            //ErrorImage = "nointernet.png";
         }
         catch (EmptySearchException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"No search results.";
+            SetError(true,
+                "No search results.",
+                "emptysearch.png");
+
             Console.WriteLine("No search results.");
-            //ErrorImage = "emptysearch.png";
         }
         catch (Exception)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"Something went wrong.";
+            SetError(true,
+                "Something went wrong.",
+                "error.png");
+
             Console.WriteLine("Something went wrong.");
-            //ErrorImage = "error.png";
         }
         finally
         {

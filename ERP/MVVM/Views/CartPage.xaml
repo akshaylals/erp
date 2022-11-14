@@ -35,8 +35,7 @@
             <CollectionView ItemsSource="{Binding CartItems}"
                         SelectionMode="None"
                         Margin="0,0,0,0"
-                        Grid.Row="1"
-                        EmptyView="Empty cart">
+                        Grid.Row="1">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:CartItem">
                         <Grid Padding="10">

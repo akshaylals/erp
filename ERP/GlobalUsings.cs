@@ -13,6 +13,7 @@ global using Framework.Exceptions;
 global using Framework.Services;
 global using Framework.Authentication;
 global using Framework.Controls;
+global using Framework.Converters;
 #endregion
 
 #region ERP

@@ -14,5 +14,11 @@
                                    LoadingText="{Binding LoadingText, Mode=OneWay}"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
+
+        <controls:ErrorIndicator IsError="{Binding IsError, Mode=OneWay}"
+                                 ErrorImage="{Binding ErrorImage}"
+                                 ErrorText="{Binding ErrorText}"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
     </Grid>
 </ContentPage>
