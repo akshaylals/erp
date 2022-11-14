@@ -9,7 +9,7 @@
              Title="CartPage">
 
     <baseviews:ViewBase.PageContent>
-        <Grid RowDefinitions=".07*,.93*">
+        <Grid RowDefinitions="60,*">
 
             <Grid BackgroundColor="White"
             ColumnDefinitions=".1*,.9*"
