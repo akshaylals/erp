@@ -45,7 +45,7 @@ public partial class App : Application
             }
             catch (Exception ex)
             {
-                await MainPage.DisplayAlert("Error", ex.ToString(), "Ok");
+                await MainPage.DisplayAlert("Error Logging in", ex.Message, "Ok");
                 Console.WriteLine(ex.ToString());
             }
         }
