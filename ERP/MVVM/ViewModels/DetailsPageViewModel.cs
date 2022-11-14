@@ -18,7 +18,7 @@ public class DetailsPageViewModel : ViewModelBase
         try
         {
             Product = await ApiService.GetProduct(productID);
-            //this.DataLoaded = true;
+            DataLoaded = true;
         }
         catch (InternetConnectionException)
         {

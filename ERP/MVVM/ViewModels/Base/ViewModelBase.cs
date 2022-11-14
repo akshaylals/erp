@@ -16,6 +16,8 @@ public class ViewModelBase
     public string ErrorText { get; set; } = string.Empty;
     public string ErrorImage { get; set; } = string.Empty;
     public bool IsError { get; set; } = false;
+
+    public bool DataLoaded { get; set; } = false;
     #endregion
 
     public ViewModelBase()

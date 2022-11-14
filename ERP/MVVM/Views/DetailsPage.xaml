@@ -31,7 +31,7 @@
 
             </Grid>
 
-            <VerticalStackLayout Grid.Row="1">
+            <VerticalStackLayout Grid.Row="1" IsVisible="{Binding DataLoaded}">
                 <Image Source="{Binding Product.image}" HeightRequest="500" WidthRequest="300"/>
                 <Label FontSize="Body" Padding="20" Text="{Binding Product.description}"/>
                 <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="20">
