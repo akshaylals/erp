@@ -16,13 +16,13 @@ public partial class EstimatePage : ViewBase<EstimatePageViewModel>
     {
         base.OnAppearing();
         //ViewModel.SearchProductsCommand.Execute("");
-        ViewModel.GetCartCount();
+        _ = ViewModel.GetCartCount();
         filterGrid.Children.Clear();
 
         if (ViewModel.filterObj.FilterString != "")
         {
             CreateFilterCard();
-            ViewModel.GetSearchProducts();
+            _ = ViewModel.GetSearchProducts();
         }
     }
 
