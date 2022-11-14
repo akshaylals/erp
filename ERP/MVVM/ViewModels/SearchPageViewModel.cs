@@ -42,6 +42,7 @@ public class SearchPageViewModel : ViewModelBase
     #region functions
     private async Task GetSearchProducts()
     {
+        SetError(false);
         SetLoading(true, "Hold on while we get products...");
 
         try
@@ -61,24 +62,21 @@ public class SearchPageViewModel : ViewModelBase
         }
         catch (InternetConnectionException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
+            SetError(true,
+                $"Slow or no internet connection. {Environment.NewLine}Please check you internet connection and try again.",
+                "nointernet.png");
+
             Console.WriteLine("Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.");
-            //ErrorImage = "nointernet.png";
         }
         catch (EmptySearchException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"No search results.";
+            SetError(true, "No search results.", "emptysearch.png");
             Console.WriteLine("No search results.");
-            //ErrorImage = "emptysearch.png";
         }
         catch (Exception)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"Something went wrong.";
+            SetError(true, "Something went wrong.", "error.png");
             Console.WriteLine("Something went wrong.");
-            //ErrorImage = "error.png";
         }
         finally
         {
@@ -89,10 +87,39 @@ public class SearchPageViewModel : ViewModelBase
 
     public async void GetAllProducts()
     {
+        SetError(false);
         SetLoading(true, "Hold on while we get products...");
-        var products = await ApiService.GetProducts();
-        Products = new ObservableCollection<Product>(products);
-        SetLoading(false);
+
+        try
+        {
+            List<Product> products;
+            products = await ApiService.GetProducts();
+            Products = new ObservableCollection<Product>(products);
+
+            //this.DataLoaded = true;
+        }
+        catch (InternetConnectionException)
+        {
+            SetError(true,
+                $"Slow or no internet connection. {Environment.NewLine}Please check you internet connection and try again.",
+                "nointernet.png");
+
+            Console.WriteLine("Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.");
+        }
+        catch (EmptySearchException)
+        {
+            SetError(true, "No search results.", "emptysearch.png");
+            Console.WriteLine("No search results.");
+        }
+        catch (Exception)
+        {
+            SetError(true, "Something went wrong.", "error.png");
+            Console.WriteLine("Something went wrong.");
+        }
+        finally
+        {
+            SetLoading(false);
+        }
     }
     #endregion
 }

@@ -31,6 +31,7 @@ public class CartPageViewModel : ViewModelBase
     #region functions
     private async Task GetCartItems()
     {
+        SetError(false);
         SetLoading(true, "Hold on while we get your cart...");
 
         try
@@ -50,23 +51,26 @@ public class CartPageViewModel : ViewModelBase
         }
         catch (InternetConnectionException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
-            //ErrorImage = "nointernet.png";
+            SetError(true,
+                $"Slow or no internet connection.{Environment.NewLine}Please check you internet connection and try again.",
+                "nointernet.png");
+            
             Console.WriteLine("Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.");
         }
         catch (EmptyCartException)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"No items in cart.";
-            //ErrorImage = "emptycart.png";
+            SetError(true,
+                "No items in cart.",
+                "emptycart.png");
+            
             Console.WriteLine("No items in cart.");
         }
         catch (Exception)
         {
-            //this.IsErrorState = true;
-            //this.ErrorMessage = $"Something went wrong.";
-            //ErrorImage = "error.png";
+            SetError(true,
+                "Something went wrong.",
+                "error.png");
+
             Console.WriteLine("Something went wrong.");
         }
         finally

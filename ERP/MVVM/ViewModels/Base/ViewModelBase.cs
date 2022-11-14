@@ -11,7 +11,11 @@ public class ViewModelBase
 
     #region Bindable Properties
     public bool IsBusy { get; set; } = false;
-    public string LoadingText { get; set; } = "";
+    public string LoadingText { get; set; } = string.Empty;
+
+    public string ErrorText { get; set; } = string.Empty;
+    public string ErrorImage { get; set; } = string.Empty;
+    public bool IsError { get; set; } = false;
     #endregion
 
     public ViewModelBase()
@@ -32,6 +36,13 @@ public class ViewModelBase
     {
         IsBusy = isLoading;
         LoadingText = loadingMsg;
+    }
+
+    protected void SetError(bool isError, string errorMsg = "", string errorImg = "")
+    {
+        IsError = isError;
+        ErrorText = errorMsg;
+        ErrorImage = errorImg;
     }
     #endregion
 }

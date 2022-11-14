@@ -21,17 +21,42 @@ public class FilterPageViewModel : ViewModelBase
     #region functions
     private async void GetCategories()
     {
+        SetError(false);
         SetLoading(true, "Loading ...");
-        var categories = await ApiService.GetCategories();
-        foreach (var category in categories)
+
+        try
         {
-            Categories.Add(new FilterOption
+            var categories = await ApiService.GetCategories();
+            foreach (var category in categories)
             {
-                CategoryName = category,
-                IsSelected = (category == FilterObj.FilterString)
-            });
+                Categories.Add(new FilterOption
+                {
+                    CategoryName = category,
+                    IsSelected = (category == FilterObj.FilterString)
+                });
+            }
         }
-        SetLoading(false);
+        catch (InternetConnectionException)
+        {
+            SetError(true,
+                $"Slow or no internet connection.{Environment.NewLine}Please check you internet connection and try again.",
+                "nointernet.png");
+
+            Console.WriteLine("Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.");
+        }
+        catch (Exception)
+        {
+            SetError(true,
+                "Something went wrong.",
+                "error.png");
+
+            Console.WriteLine("Something went wrong.");
+        }
+        finally
+        {
+            SetLoading(false);
+        }
+
     }
     #endregion
 }

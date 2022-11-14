@@ -11,8 +11,6 @@ public partial class LoadingIndicator : VerticalStackLayout
         null,
         SetIsBusy);
 
-    private bool isBusy;
-
     private static void SetIsBusy(BindableObject bindable, object oldValue, object newValue)
     {
         LoadingIndicator control = bindable as LoadingIndicator;
