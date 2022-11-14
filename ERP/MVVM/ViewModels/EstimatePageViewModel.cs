@@ -79,14 +79,16 @@ public class EstimatePageViewModel : ViewModelBase
         );
         await dummyImage.ScaleTo(0, 200);
 
-        var cx = cartBtn.X;
-        var cy = cartBtn.Y;
-        var shakeOffset = 10;
-        await cartBtn.TranslateTo(cx - shakeOffset, cy, 50, Easing.CubicInOut);
-        await cartBtn.TranslateTo(cx + shakeOffset, cy, 50, Easing.CubicInOut);
-        await cartBtn.TranslateTo(cx - shakeOffset, cy, 50, Easing.CubicInOut);
-        await cartBtn.TranslateTo(cx + shakeOffset, cy, 50, Easing.CubicInOut);
-        await cartBtn.TranslateTo(cx, cy, 50, Easing.CubicInOut);
+        //var cx = cartBtn.X;
+        //var cy = cartBtn.Y;
+        //var shakeOffset = 5;
+        //await cartBtn.TranslateTo(cx - shakeOffset, cy, 25, Easing.CubicInOut);
+        //await cartBtn.TranslateTo(cx + shakeOffset, cy, 25, Easing.CubicInOut);
+        //await cartBtn.TranslateTo(cx - shakeOffset, cy, 25, Easing.CubicInOut);
+        //await cartBtn.TranslateTo(cx + shakeOffset, cy, 25, Easing.CubicInOut);
+        //await cartBtn.TranslateTo(cx, cy, 25, Easing.CubicInOut);
+
+        Vibration.Default.Vibrate(250);
 
         dummyImage.IsVisible = false;
     }
