@@ -5,7 +5,7 @@ public class CartPageViewModel : ViewModelBase
 {
     public CartPageViewModel()
     {
-        GetCartItems();
+        _ = GetCartItems();
     }
 
     #region Binding Property
