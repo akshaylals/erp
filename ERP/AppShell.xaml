@@ -6,7 +6,9 @@
     xmlns:views="clr-namespace:ERP.MVVM.Views"
     xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
     android:TabbedPage.ToolbarPlacement="Bottom"
-    android:TabbedPage.IsSwipePagingEnabled="False">
+    android:TabbedPage.IsSwipePagingEnabled="False"
+    SelectedTabColor="{StaticResource Primary}"
+    UnselectedTabColor="{StaticResource Gray200}">
 
     <NavigationPage Title="Search" IconImageSource="ic_search.png">
         <x:Arguments>
