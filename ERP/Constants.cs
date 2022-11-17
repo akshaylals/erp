@@ -11,11 +11,14 @@ public static class Constants
 #endif
 
     ////OidcClient Options - AWS
-    //public static string authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/";
-    //public static string clientId = "6inagfr1f90pv903vvtd7out3k";
-    //public static string redirectUri = "erp://";
-    //public static string scope = "openid email profile";
-    //public static string clientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l";
+    //public static AuthConfig authConfig = new AuthConfig
+    //{
+    //    Authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_Z3HizOtuq/",
+    //    ClientId = "6inagfr1f90pv903vvtd7out3k",
+    //    RedirectUri = "erp://",
+    //    Scope = "openid email profile",
+    //    ClientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l"
+    //};
 
     //OidcClient Options - Okta
     public static AuthConfig authConfig = new AuthConfig
