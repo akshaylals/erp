@@ -1,4 +1,5 @@
 ﻿using Framework.Authentication;
+using Framework.Services;
 using IdentityModel.OidcClient;
 
 namespace Framework.Extensions;
@@ -21,6 +22,7 @@ public static class AuthenticationExtensions
 
             })
         );
+        builder.Services.AddSingleton<AuthService>();
 
         return builder;
     }
