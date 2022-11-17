@@ -14,6 +14,8 @@ global using Framework.Services;
 global using Framework.Authentication;
 global using Framework.Controls;
 global using Framework.Converters;
+global using Framework.Classes;
+global using Framework.Extensions;
 #endregion
 
 #region ERP

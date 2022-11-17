@@ -7,3 +7,4 @@ global using IBrowser = IdentityModel.OidcClient.Browser.IBrowser;
 
 
 global using Framework.Exceptions;
+global using Framework.Classes;

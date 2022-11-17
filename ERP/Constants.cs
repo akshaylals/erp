@@ -1,9 +1,11 @@
-﻿namespace ERP;
+﻿using static System.Formats.Asn1.AsnWriter;
+
+namespace ERP;
 
 public static class Constants
 {
 #if ANDROID
-    public static string apiEndpoint = "http://172.21.32.1:3000";
+    public static string apiEndpoint = "http://172.20.0.1:3000";
 #else
     public static string apiEndpoint = "http://localhost:3000";
 #endif
@@ -16,9 +18,12 @@ public static class Constants
     //public static string clientSecret = "1gi4j6jptekcdptasjsfb5cfrn71avl1u48qohf0uavlr8apgl1l";
 
     //OidcClient Options - Okta
-    public static string authority = "https://dev-1ipheitoccjnh67e.us.auth0.com";
-    public static string clientId = "yNZ1SyOXtgWJ6QwyxRADZjl82dKkpCcn";
-    public static string redirectUri = "erp://callback";
-    public static string scope = "openid email profile";
-    public static string clientSecret = "JdJFadUXHdmMvhjgCDMugP_rOvrbcC7hmIr-b6KSnvJJuzRRssS8_TJ5gmhXFgwI";
+    public static AuthConfig authConfig = new AuthConfig
+    {
+        Authority = "https://dev-1ipheitoccjnh67e.us.auth0.com",
+        ClientId = "yNZ1SyOXtgWJ6QwyxRADZjl82dKkpCcn",
+        RedirectUri = "erp://callback",
+        Scope = "openid email profile",
+        ClientSecret = "JdJFadUXHdmMvhjgCDMugP_rOvrbcC7hmIr-b6KSnvJJuzRRssS8_TJ5gmhXFgwI"
+    };
 }
