@@ -90,7 +90,7 @@ public class ApiService : RestServiceBase, IApiService
             throw new EmptySearchException();
         }
 
-        var resourceUri = $"/products?title_like={search}";
+        var resourceUri = $"/products/search/{search}";
 
         var result = await GetAsync<List<Product>>(resourceUri);
 
@@ -109,7 +109,7 @@ public class ApiService : RestServiceBase, IApiService
             throw new EmptySearchException();
         }
 
-        var resourceUri = $"/products?title_like={search}&category_like={filter}";
+        var resourceUri = $"/products/search/{search}/{filter}";
 
         var result = await GetAsync<List<Product>>(resourceUri);
 

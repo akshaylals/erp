@@ -5,7 +5,7 @@ namespace ERP;
 public static class Constants
 {
 #if ANDROID
-    public static string apiEndpoint = "http://172.20.0.1:3000";
+    public static string apiEndpoint = "http://172.30.0.1:5000";
 #else
     public static string apiEndpoint = "http://localhost:3000";
 #endif
